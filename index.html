@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-wrap">
+            <a href="/" class="logo"><div class="logo-box">T</div> TechStore</a>
+            <nav class="nav">
+                <a href="#">Products</a><a href="#">Categories</a><a href="#">Deals</a><a href="#">About</a>
+            </nav>
+            <div class="actions"><i data-lucide="search"></i> <i data-lucide="shopping-cart"></i></div>
+        </div>
+    </header>
+
+    <div class="container hero-section">
+        <h1>Premium Electronics</h1>
+        <p>Discover our curated collection of high-quality tech products</p>
+    </div>
+
+    <main class="container main-layout">
+        <aside class="sidebar">
+            <div class="filter-card">
+                <h3>Rating</h3>
+                <label><input type="checkbox"> 5+ Stars</label>
+                <label><input type="checkbox"> 4+ Stars</label>
+                <h3>Price Range</h3>
+                <input type="range" class="range">
+            </div>
+        </aside>
+
+        <section class="content">
+            <div class="toolbar"><span>6 products</span> <span>Sort by: Name (A-Z)</span></div>
+            <div class="product-grid">
+                <div class="card">
+                    <div class="card-img"><img src="https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=400" alt=""></div>
+                    <div class="card-body">
+                        <h4>Portable Bluetooth Speaker</h4>
+                        <div class="price">$129.99</div>
+                    </div>
+                </div>
+                <!-- Еще пару карточек -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col"><h4>TechStore</h4><p>Trusted destination for tech.</p></div>
+            <div class="footer-col"><h4>Shop</h4><a href="#">Products</a><a href="#">Deals</a></div>
+            <div class="footer-col"><h4>Support</h4><a href="#">Shipping</a><a href="#">Returns</a></div>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
