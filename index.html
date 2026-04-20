@@ -6,43 +6,37 @@
     <title>TechStore | Premium Electronics</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="js/doubleslider.js" defer></script>
 </head>
 <body>
 
-    <!-- HEADER -->
     <header class="header">
         <div class="container header-wrap">
-            <a href="/" class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-box">T</div>
                 <span>TechStore</span>
             </a>
             
             <nav class="nav">
-                <a href="#" class="active">Products</a>
+                <a href="index.html" class="active">Products</a>
                 <a href="#">Categories</a>
                 <a href="#">Deals</a>
                 <a href="#">About</a>
             </nav>
 
             <div class="actions">
-                <button class="icon-btn" aria-label="Search">
-                    <i data-lucide="search"></i>
-                </button>
-                <button class="icon-btn" aria-label="Shopping Cart">
-                    <i data-lucide="shopping-cart"></i>
-                </button>
+                <button class="icon-btn" aria-label="Search"><i data-lucide="search"></i></button>
+                <button class="icon-btn" aria-label="Cart"><i data-lucide="shopping-cart"></i></button>
             </div>
         </div>
     </header>
 
     <main class="container">
-        <!-- HERO SECTION -->
         <section class="hero">
             <h1>Premium Electronics</h1>
             <p>Discover our curated collection of high-quality tech products</p>
         </section>
 
-        <!-- TOOLBAR -->
         <div class="toolbar">
             <div class="products-count">6 products</div>
             <div class="sorting">
@@ -50,20 +44,14 @@
                 <select class="sort-select">
                     <option>Name (A-Z)</option>
                     <option>Price: Low to High</option>
-                    <option>Price: High to Low</option>
                 </select>
             </div>
         </div>
 
-        <!-- MAIN LAYOUT -->
         <div class="main-content">
-            
-            <!-- SIDEBAR FILTERS -->
             <aside class="filters">
                 <div class="filter-card">
-                    <h2 class="filter-title">
-                        <i data-lucide="sliders-horizontal"></i> Filters
-                    </h2>
+                    <h2 class="filter-title"><i data-lucide="sliders-horizontal"></i> Filters</h2>
                     
                     <div class="filter-group">
                         <h3>Rating</h3>
@@ -74,10 +62,16 @@
 
                     <div class="filter-group">
                         <h3>Price Range</h3>
-                        <input type="range" class="price-slider" min="0" max="3000" value="3000">
+                        <div class="slider-container">
+                            <div class="slider-track"></div>
+                            <div id="sliderRange" class="slider-range"></div>
+                            <input type="range" min="0" max="3000" value="0" step="50" id="minPrice">
+                            <input type="range" min="0" max="3000" value="3000" step="50" id="maxPrice">
+                        </div>
+                        
                         <div class="price-labels">
-                            <span>$0</span>
-                            <span>$3000</span>
+                            <span id="minValue">$0</span>
+                            <span id="maxValue">$3000</span>
                         </div>
                     </div>
 
@@ -85,13 +79,10 @@
                 </div>
             </aside>
 
-            <!-- PRODUCT GRID -->
             <section class="product-grid">
-                
-                <!-- Card 1 -->
                 <article class="card">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=500" alt="Portable Bluetooth Speaker">
+                        <img src="https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=500" alt="Speaker">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Portable Bluetooth Speaker</h4>
@@ -106,10 +97,9 @@
                     </div>
                 </article>
 
-                <!-- Card 2 -->
                 <article class="card">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=500" alt="Premium Wireless Headphones">
+                        <img src="https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=500" alt="Headphones">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Premium Wireless Headphones</h4>
@@ -124,10 +114,9 @@
                     </div>
                 </article>
 
-                <!-- Card 3 -->
                 <article class="card">
                     <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=500" alt="Professional DSLR Camera">
+                        <img src="https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=500" alt="Camera">
                     </div>
                     <div class="card-body">
                         <h4 class="card-title">Professional DSLR Camera</h4>
@@ -141,12 +130,10 @@
                         </div>
                     </div>
                 </article>
-
             </section>
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
@@ -155,14 +142,11 @@
                         <div class="logo-box">T</div>
                         <span>TechStore</span>
                     </div>
-                    <p class="brand-text">
-                        Your trusted destination for premium electronics and tech accessories. Quality products, competitive prices.
-                    </p>
+                    <p class="brand-text">Your trusted destination for premium electronics. Quality products, competitive prices.</p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i data-lucide="facebook"></i></a>
                         <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
                         <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
-                        <a href="#" class="social-icon"><i data-lucide="youtube"></i></a>
                     </div>
                 </div>
 
@@ -172,48 +156,36 @@
                         <a href="#">Shop All Products</a>
                         <a href="#">Special Deals</a>
                         <a href="#">About Us</a>
-                        <a href="#">Contact Support</a>
                     </nav>
                 </div>
 
                 <div class="footer-col">
                     <h4>Customer Service</h4>
                     <nav class="footer-nav">
-                        <a href="#">Shipping Information</a>
-                        <a href="#">Returns & Exchanges</a>
                         <a href="#">FAQ</a>
                         <a href="#">Track Order</a>
                     </nav>
                     <div class="support-info">
                         <p>Customer Support:</p>
                         <p class="support-phone">1-800-TECH-SHOP</p>
-                        <p class="support-email">support@techstore.com</p>
                     </div>
                 </div>
 
                 <div class="footer-col footer-newsletter">
                     <h4>Newsletter</h4>
-                    <p class="newsletter-text">Subscribe for special offers, giveaways, and updates.</p>
+                    <p class="newsletter-text">Subscribe for special offers.</p>
                     <form class="news-form">
                         <input type="email" placeholder="Enter your email" required>
                         <button type="submit" class="btn-subscribe">Subscribe</button>
                     </form>
                 </div>
             </div>
-
             <div class="footer-bottom">
                 <p class="copyright">© 2026 TechStore. All rights reserved.</p>
-                <div class="policy-links">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                    <a href="#">Cookie Policy</a>
-                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        lucide.createIcons();
-    </script>
+    <script>lucide.createIcons();</script>
 </body>
 </html>
