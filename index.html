@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechStore | Premium Electronics</title>
+    
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
+    
     <script src="js/doubleslider.js" defer></script>
+    <script src="js/productloader.js" defer></script>
 </head>
 <body>
 
+    <!-- Header Section -->
     <header class="header">
         <div class="container header-wrap">
             <a href="index.html" class="logo">
@@ -32,34 +36,48 @@
     </header>
 
     <main class="container">
+        <!-- Page Title -->
         <section class="hero">
             <h1>Premium Electronics</h1>
             <p>Discover our curated collection of high-quality tech products</p>
         </section>
 
+        <!-- Product Toolbar (Count & Sort) -->
         <div class="toolbar">
-            <div class="products-count">6 products</div>
+            <div class="products-count">0 products</div>
             <div class="sorting">
                 <span>Sort by:</span>
-                <select class="sort-select">
-                    <option>Name (A-Z)</option>
-                    <option>Price: Low to High</option>
+                <select class="sort-select" id="sortSelect">
+                    <option value="name">Name (A-Z)</option>
+                    <option value="low">Price: Low to High</option>
+                    <option value="high">Price: High to Low</option>
                 </select>
             </div>
         </div>
 
+        <!-- Main Content Area -->
         <div class="main-content">
+            
+            <!-- Sidebar with Filters -->
             <aside class="filters">
                 <div class="filter-card">
                     <h2 class="filter-title"><i data-lucide="sliders-horizontal"></i> Filters</h2>
                     
+                    <!-- Rating Filter -->
                     <div class="filter-group">
                         <h3>Rating</h3>
-                        <label class="checkbox-item"><input type="checkbox"> 5+ Stars</label>
-                        <label class="checkbox-item"><input type="checkbox"> 4+ Stars</label>
-                        <label class="checkbox-item"><input type="checkbox"> 3+ Stars</label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="rating-checkbox" value="5"> 5+ Stars
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="rating-checkbox" value="4"> 4+ Stars
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="rating-checkbox" value="3"> 3+ Stars
+                        </label>
                     </div>
 
+                    <!-- Price Filter -->
                     <div class="filter-group">
                         <h3>Price Range</h3>
                         <div class="slider-container">
@@ -68,7 +86,6 @@
                             <input type="range" min="0" max="3000" value="0" step="50" id="minPrice">
                             <input type="range" min="0" max="3000" value="3000" step="50" id="maxPrice">
                         </div>
-                        
                         <div class="price-labels">
                             <span id="minValue">$0</span>
                             <span id="maxValue">$3000</span>
@@ -79,64 +96,16 @@
                 </div>
             </aside>
 
-            <section class="product-grid">
-                <article class="card">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=500" alt="Speaker">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Portable Bluetooth Speaker</h4>
-                        <div class="rating">
-                            <span class="stars">★★★★☆</span>
-                            <span class="rating-val">(3.5)</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="price">$129.99</span>
-                            <span class="category">Audio</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=500" alt="Headphones">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Premium Wireless Headphones</h4>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">(5)</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="price">$299.99</span>
-                            <span class="category">Audio</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-img">
-                        <img src="https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=500" alt="Camera">
-                    </div>
-                    <div class="card-body">
-                        <h4 class="card-title">Professional DSLR Camera</h4>
-                        <div class="rating">
-                            <span class="stars">★★★★★</span>
-                            <span class="rating-val">(5)</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="price">$2499.99</span>
-                            <span class="category">Photography</span>
-                        </div>
-                    </div>
-                </article>
-            </section>
+            <!-- Product Grid -->
+            <section class="product-grid" id="productGrid"></section>
         </div>
     </main>
 
+    <!-- Footer Section -->
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
+                <!-- Brand Identity -->
                 <div class="footer-col footer-brand">
                     <div class="logo">
                         <div class="logo-box">T</div>
@@ -150,6 +119,7 @@
                     </div>
                 </div>
 
+                <!-- Navigation Links -->
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <nav class="footer-nav">
@@ -159,6 +129,7 @@
                     </nav>
                 </div>
 
+                <!-- Support Info -->
                 <div class="footer-col">
                     <h4>Customer Service</h4>
                     <nav class="footer-nav">
@@ -171,6 +142,7 @@
                     </div>
                 </div>
 
+                <!-- Newsletter Subscription -->
                 <div class="footer-col footer-newsletter">
                     <h4>Newsletter</h4>
                     <p class="newsletter-text">Subscribe for special offers.</p>
@@ -180,6 +152,7 @@
                     </form>
                 </div>
             </div>
+            
             <div class="footer-bottom">
                 <p class="copyright">© 2026 TechStore. All rights reserved.</p>
             </div>

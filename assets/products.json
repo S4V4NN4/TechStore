@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Portable Bluetooth Speaker",
+    "price": 129.99,
+    "category": "Audio",
+    "rating": 3.5,
+    "image": "https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=500"
+  },
+  {
+    "id": 2,
+    "name": "Premium Wireless Headphones",
+    "price": 299.99,
+    "category": "Audio",
+    "rating": 5.0,
+    "image": "https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=500"
+  },
+  {
+    "id": 3,
+    "name": "Professional DSLR Camera",
+    "price": 2499.99,
+    "category": "Photography",
+    "rating": 4.8,
+    "image": "https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=500"
+  },
+  {
+    "id": 4,
+    "name": "Professional Laptop Pro",
+    "price": 1899.99,
+    "category": "Computers",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1673431738089-c4fc9c2e96a7?w=500"
+  },
+  {
+    "id": 5,
+    "name": "Smart Fitness Watch Ultra",
+    "price": 449.99,
+    "category": "Wearables",
+    "rating": 4.0,
+    "image": "https://images.unsplash.com/photo-1665860455418-017fa50d29bc?w=500"
+  },
+  {
+    "id": 6,
+    "name": "Ultra-Thin Tablet Pro",
+    "price": 799.99,
+    "category": "Tablets",
+    "rating": 4.5,
+    "image": "https://images.unsplash.com/photo-1740637977676-c8040b41dc7a?w=500"
+  }
+]

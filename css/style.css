@@ -1,38 +1,35 @@
 /* ==========================================================================
-   1. ПЕРЕМЕННЫЕ (Design Tokens)
+   1. DESIGN TOKENS (Variables)
    ========================================================================== */
 :root {
-    /* Цвета */
+    /* Brand Colors */
     --color-primary: oklch(54.6% .245 262.881);
     --color-primary-dark: oklch(48.8% .243 264.376);
     --color-purple: oklch(55.8% .288 302.321);
-    --color-gray-50: oklch(98.5% .002 247.839);
+    --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-purple));
+
+    /* Neutrals */
+    --color-bg: oklch(98.5% .002 247.839);
     --color-gray-100: oklch(96.7% .003 264.542);
     --color-gray-200: oklch(92.8% .006 264.531);
     --color-gray-600: oklch(44.6% .03 256.802);
     --color-text: oklch(21% .034 264.665);
     
-    /* Интерфейс */
+    /* Layout constants */
     --border: #e5e7eb;
     --radius: 12px;
     --container-max: 1600px;
     --transition: 0.3s ease;
-    
-    /* Тени */
-    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
-    --shadow-md: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
-    
-    /* Градиент */
-    --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-purple));
 
-    /* Жирность шрифта */
+    /* Typography Weights */
+    --fw-regular: 400;
     --fw-medium: 500;
     --fw-semibold: 600;
     --fw-bold: 700;
 }
 
 /* ==========================================================================
-   2. СБРОС И БАЗОВЫЕ СТИЛИ
+   2. RESET & BASE
    ========================================================================== */
 * {
     box-sizing: border-box;
@@ -42,10 +39,17 @@
 
 body {
     font-family: system-ui, -apple-system, sans-serif;
-    background-color: var(--color-gray-50);
+    background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 a {
@@ -61,20 +65,13 @@ button {
     background: none;
 }
 
-.container {
-    width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 2rem;
-}
-
 /* ==========================================================================
-   3. ШАПКА (Header)
+   3. HEADER
    ========================================================================== */
 .header {
-    background: white;
+    background: #ffffff;
     border-bottom: 1px solid var(--border);
-    box-shadow: var(--shadow-sm);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
     height: 64px;
     position: sticky;
     top: 0;
@@ -98,7 +95,7 @@ button {
 
 .logo-box {
     background: var(--gradient-brand);
-    color: white;
+    color: #ffffff;
     width: 38px;
     height: 38px;
     border-radius: 10px;
@@ -125,45 +122,55 @@ button {
 
 .nav a.active {
     background: var(--gradient-brand);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
     font-weight: var(--fw-bold);
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
 }
 
 .icon-btn {
     color: var(--color-gray-600);
     padding: 8px;
     border-radius: 50%;
-    transition: var(--transition);
+    transition: background var(--transition), color var(--transition);
 }
 
 .icon-btn:hover {
-    background: var(--color-gray-50);
+    background: var(--color-gray-100);
     color: var(--color-primary);
 }
 
 /* ==========================================================================
-   4. СЕКЦИИ И ЛЕЙАУТ
+   4. SECTIONS & LAYOUT
    ========================================================================== */
+/* Hero section with page title */
 .hero {
     padding: 3rem 0 1rem;
 }
 
 .hero h1 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
     margin-bottom: 0.5rem;
 }
 
 .hero p {
     color: var(--color-gray-600);
+    font-size: 1.1rem;
 }
 
+/* Toolbar for sorting and count */
 .toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
+    margin-bottom: 1rem;
     font-size: 0.9rem;
     color: var(--color-gray-600);
 }
@@ -172,10 +179,12 @@ button {
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid var(--border);
-    background: white;
+    background: #ffffff;
     outline: none;
+    cursor: pointer;
 }
 
+/* Main content grid layout */
 .main-content {
     display: flex;
     gap: 3rem;
@@ -184,7 +193,7 @@ button {
 }
 
 /* ==========================================================================
-   5. ФИЛЬТРЫ И ДВОЙНОЙ СЛАЙДЕР (Исправлено)
+   5. FILTERS (Sidebar)
    ========================================================================== */
 .filters {
     width: 280px;
@@ -194,7 +203,7 @@ button {
 }
 
 .filter-card {
-    background: white;
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.5rem;
@@ -210,7 +219,7 @@ button {
 }
 
 .filter-group {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .filter-group h3 {
@@ -219,21 +228,7 @@ button {
     margin-bottom: 1rem;
 }
 
-.checkbox-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 0.75rem;
-    font-size: 0.95rem;
-    cursor: pointer;
-}
-
-.checkbox-item input {
-    width: 18px;
-    height: 18px;
-    accent-color: black;
-}
-
+/* Price range dual slider */
 .slider-container {
     position: relative;
     width: 100%;
@@ -254,7 +249,7 @@ button {
 .slider-range {
     position: absolute;
     height: 6px;
-    background: black;
+    background: #000000;
     border-radius: 10px;
     z-index: 2;
 }
@@ -266,21 +261,19 @@ button {
     appearance: none;
     background: none;
     z-index: 3;
-    margin: 0;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .slider-container input[type="range"]::-webkit-slider-thumb {
-    pointer-events: auto;
     appearance: none;
+    pointer-events: auto;
     width: 20px;
     height: 20px;
-    background: white;
-    border: 2px solid black;
+    background: #ffffff;
+    border: 2px solid #000000;
     border-radius: 50%;
     cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .price-labels {
@@ -289,13 +282,12 @@ button {
     margin-top: 10px;
     font-size: 0.85rem;
     color: var(--color-gray-600);
-    font-weight: var(--fw-medium);
 }
 
 .btn-clear {
     width: 100%;
     padding: 10px;
-    background: white;
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-weight: var(--fw-medium);
@@ -304,11 +296,11 @@ button {
 }
 
 .btn-clear:hover {
-    background: var(--color-gray-50);
+    background: var(--color-gray-100);
 }
 
 /* ==========================================================================
-   6. СЕТКА ТОВАРОВ И КАРТОЧКИ
+   6. PRODUCT CARDS
    ========================================================================== */
 .product-grid {
     display: grid;
@@ -318,7 +310,7 @@ button {
 }
 
 .card {
-    background: white;
+    background: #ffffff;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
@@ -326,7 +318,7 @@ button {
 }
 
 .card:hover {
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
 }
 
 .card-img {
@@ -356,16 +348,6 @@ button {
     margin-bottom: 0.5rem;
 }
 
-.stars {
-    color: #facc15;
-}
-
-.rating-val {
-    color: var(--color-gray-600);
-    font-size: 0.85rem;
-    margin-left: 4px;
-}
-
 .card-footer {
     display: flex;
     justify-content: space-between;
@@ -387,12 +369,12 @@ button {
 }
 
 /* ==========================================================================
-   7. ПОДВАЛ (Footer)
+   7. FOOTER
    ========================================================================== */
 .footer {
-    background: white;
+    background: #ffffff;
     border-top: 1px solid var(--border);
-    padding: 60px 0 40px;
+    padding: 80px 0 40px;
     margin-top: 60px;
 }
 
@@ -410,9 +392,9 @@ button {
 }
 
 .footer-col h4 {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: var(--fw-bold);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .footer-nav a {
@@ -429,7 +411,7 @@ button {
 .social-links {
     display: flex;
     gap: 12px;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 .social-icon {
@@ -446,12 +428,12 @@ button {
 
 .social-icon:hover {
     background: var(--color-primary);
-    color: white;
+    color: #ffffff;
 }
 
 .btn-subscribe {
     background: var(--color-primary);
-    color: white;
+    color: #ffffff;
     padding: 12px;
     border-radius: 8px;
     font-weight: var(--fw-semibold);
@@ -466,14 +448,85 @@ button {
 
 .footer-bottom {
     border-top: 1px solid var(--border);
-    padding-top: 20px;
+    padding-top: 30px;
     text-align: center;
     color: var(--color-gray-600);
     font-size: 0.9rem;
 }
 
 /* ==========================================================================
-   8. АДАПТИВНОСТЬ
+   8. UI COMPONENTS (Stars & Checkbox)
+   ========================================================================== */
+/* Interactive star rating */
+.stars {
+    display: inline-flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.stars svg {
+    width: 16px;
+    height: 16px;
+    stroke: #facc15;
+    stroke-width: 2px;
+}
+
+.stars svg.fill-current {
+    fill: #facc15;
+}
+
+.stars svg.empty {
+    stroke: #e5e7eb;
+    fill: none;
+}
+
+/* Styled rating checkboxes */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.rating-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: #ffffff;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.rating-checkbox:checked {
+    background-color: var(--color-text);
+    border-color: var(--color-text);
+}
+
+.rating-checkbox::before {
+    content: "";
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: scale(0) rotate(45deg);
+    transition: 120ms;
+    
+    margin-bottom: 2px; 
+}
+
+.rating-checkbox:checked::before {
+    transform: scale(1) rotate(45deg);
+}
+
+/* ==========================================================================
+   9. RESPONSIVE
    ========================================================================== */
 @media (max-width: 768px) {
     .main-content {

@@ -31,7 +31,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         range.style.left = percentMin + "%";
         range.style.right = (100 - percentMax) + "%";
+
+        if (e && typeof applyFiltersAndSort === "function") {
+            applyFiltersAndSort();
+        }
     }
+
+    window.updateSliderUI = () => updateSlider();
 
     minSlider.addEventListener("input", updateSlider);
     maxSlider.addEventListener("input", updateSlider);
