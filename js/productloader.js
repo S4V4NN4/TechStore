@@ -1,18 +1,18 @@
 let allProducts = [];
 
-// Initial Data Loading
+// Initialize products from JSON
 async function loadProducts() {
     try {
         const response = await fetch('./assets/products.json');
-        if (!response.ok) throw new Error("Data file not found");
+        if (!response.ok) throw new Error("Fetch failed");
         allProducts = await response.json();
         applyFiltersAndSort();
     } catch (error) {
-        console.error("Critical error loading products:", error);
+        console.error("Initialization error:", error);
     }
 }
 
-// Star Rating SVG Generator
+// Generate stars using Lucide icons
 function renderStars(rating) {
     let starsHtml = '';
     for (let i = 1; i <= 5; i++) {
@@ -27,13 +27,13 @@ function renderStars(rating) {
     return `<div class="stars">${starsHtml}</div>`;
 }
 
-// Core Rendering Engine
+// Core Rendering function
 function renderProducts(products) {
     const container = document.getElementById('productGrid');
     if (!container) return;
 
     if (products.length === 0) {
-        container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; padding: 3rem; color: gray;">No gadgets matching your criteria.</p>`;
+        container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; padding: 3rem; color: gray;">No gadgets found in this range.</p>`;
         return;
     }
 
@@ -54,52 +54,51 @@ function renderProducts(products) {
         </article>
     `).join('');
     
-    // Refresh Lucide icons after DOM update
     lucide.createIcons();
 }
 
-// Combined Filtering & Sorting Logic
+// Global Filter & Sort Logic
 function applyFiltersAndSort() {
-    // 1. Get Values
     const minPrice = parseInt(document.getElementById("minPrice")?.value || 0);
     const maxPrice = parseInt(document.getElementById("maxPrice")?.value || 3000);
     const sortValue = document.getElementById("sortSelect")?.value || "name";
 
-    // 2. Filter Data
+    // 1. Filter by price
     let results = allProducts.filter(p => p.price >= minPrice && p.price <= maxPrice);
 
-    // 3. Rating Checkbox Filter
-    const activeRatings = Array.from(document.querySelectorAll('.rating-checkbox:checked'))
-                               .map(cb => parseInt(cb.value));
-    if (activeRatings.length > 0) {
-        const minSelected = Math.min(...activeRatings);
+    // 2. Filter by Rating
+    const checkedRatings = Array.from(document.querySelectorAll('.rating-checkbox:checked'))
+                                .map(cb => parseInt(cb.value));
+    
+    if (checkedRatings.length > 0) {
+        const minSelected = Math.min(...checkedRatings);
         results = results.filter(p => p.rating >= minSelected);
     }
 
-    // 4. Sort Results
-    switch(sortValue) {
-        case 'low':  results.sort((a, b) => a.price - b.price); break;
-        case 'high': results.sort((a, b) => b.price - a.price); break;
-        default:     results.sort((a, b) => a.name.localeCompare(b.name));
+    // 3. Sorting
+    if (sortValue === "low") {
+        results.sort((a, b) => a.price - b.price);
+    } else if (sortValue === "high") {
+        results.sort((a, b) => b.price - a.price);
+    } else {
+        results.sort((a, b) => a.name.localeCompare(b.name));
     }
 
-    // 5. Output
     renderProducts(results);
+
+    // Update count display
     const countElem = document.querySelector('.products-count');
     if (countElem) countElem.textContent = `${results.length} products`;
 }
 
-// Event Listeners
+// Setup Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
-    // Select dropdown listener
     document.getElementById("sortSelect")?.addEventListener("change", applyFiltersAndSort);
-    
-    // Rating checkboxes listeners
+
     document.querySelectorAll(".rating-checkbox").forEach(cb => {
         cb.addEventListener("change", applyFiltersAndSort);
     });
 
-    // Reset Filters Button
     document.querySelector(".btn-clear")?.addEventListener("click", () => {
         document.getElementById("minPrice").value = 0;
         document.getElementById("maxPrice").value = 3000;

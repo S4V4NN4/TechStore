@@ -8,28 +8,31 @@
     --color-purple: oklch(55.8% .288 302.321);
     --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-purple));
 
-    /* Neutrals */
-    --color-bg: oklch(98.5% .002 247.839);
+    /* UI Colors */
+    --color-gray-50: oklch(98.5% .002 247.839);
     --color-gray-100: oklch(96.7% .003 264.542);
     --color-gray-200: oklch(92.8% .006 264.531);
     --color-gray-600: oklch(44.6% .03 256.802);
     --color-text: oklch(21% .034 264.665);
     
-    /* Layout constants */
+    /* Layout Settings */
     --border: #e5e7eb;
     --radius: 12px;
     --container-max: 1600px;
     --transition: 0.3s ease;
-
+    
     /* Typography Weights */
-    --fw-regular: 400;
     --fw-medium: 500;
     --fw-semibold: 600;
     --fw-bold: 700;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
 }
 
 /* ==========================================================================
-   2. RESET & BASE
+   2. BASE STYLES
    ========================================================================== */
 * {
     box-sizing: border-box;
@@ -39,7 +42,7 @@
 
 body {
     font-family: system-ui, -apple-system, sans-serif;
-    background-color: var(--color-bg);
+    background-color: var(--color-gray-50);
     color: var(--color-text);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
@@ -69,9 +72,9 @@ button {
    3. HEADER
    ========================================================================== */
 .header {
-    background: #ffffff;
+    background: white;
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    box-shadow: var(--shadow-sm);
     height: 64px;
     position: sticky;
     top: 0;
@@ -95,7 +98,7 @@ button {
 
 .logo-box {
     background: var(--gradient-brand);
-    color: #ffffff;
+    color: white;
     width: 38px;
     height: 38px;
     border-radius: 10px;
@@ -122,55 +125,46 @@ button {
 
 .nav a.active {
     background: var(--gradient-brand);
-    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
     font-weight: var(--fw-bold);
-}
-
-.actions {
-    display: flex;
-    gap: 0.5rem;
 }
 
 .icon-btn {
     color: var(--color-gray-600);
     padding: 8px;
     border-radius: 50%;
-    transition: background var(--transition), color var(--transition);
+    transition: var(--transition);
 }
 
 .icon-btn:hover {
-    background: var(--color-gray-100);
+    background: var(--color-gray-50);
     color: var(--color-primary);
 }
 
 /* ==========================================================================
-   4. SECTIONS & LAYOUT
+   4. HERO & TOOLBAR
    ========================================================================== */
-/* Hero section with page title */
 .hero {
     padding: 3rem 0 1rem;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    font-weight: var(--fw-bold);
+    font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
 
 .hero p {
     color: var(--color-gray-600);
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
-/* Toolbar for sorting and count */
 .toolbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem 0;
-    margin-bottom: 1rem;
     font-size: 0.9rem;
     color: var(--color-gray-600);
 }
@@ -179,12 +173,13 @@ button {
     padding: 8px 12px;
     border-radius: 8px;
     border: 1px solid var(--border);
-    background: #ffffff;
+    background: white;
     outline: none;
-    cursor: pointer;
 }
 
-/* Main content grid layout */
+/* ==========================================================================
+   5. MAIN CONTENT & FILTERS
+   ========================================================================== */
 .main-content {
     display: flex;
     gap: 3rem;
@@ -192,9 +187,6 @@ button {
     align-items: flex-start;
 }
 
-/* ==========================================================================
-   5. FILTERS (Sidebar)
-   ========================================================================== */
 .filters {
     width: 280px;
     flex-shrink: 0;
@@ -203,7 +195,7 @@ button {
 }
 
 .filter-card {
-    background: #ffffff;
+    background: white;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.5rem;
@@ -219,7 +211,7 @@ button {
 }
 
 .filter-group {
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
 }
 
 .filter-group h3 {
@@ -228,7 +220,7 @@ button {
     margin-bottom: 1rem;
 }
 
-/* Price range dual slider */
+/* --- Price Slider UI --- */
 .slider-container {
     position: relative;
     width: 100%;
@@ -249,7 +241,7 @@ button {
 .slider-range {
     position: absolute;
     height: 6px;
-    background: #000000;
+    background: black;
     border-radius: 10px;
     z-index: 2;
 }
@@ -266,14 +258,15 @@ button {
 }
 
 .slider-container input[type="range"]::-webkit-slider-thumb {
-    appearance: none;
     pointer-events: auto;
+    appearance: none;
     width: 20px;
     height: 20px;
-    background: #ffffff;
-    border: 2px solid #000000;
+    background: white;
+    border: 2px solid black;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .price-labels {
@@ -282,12 +275,13 @@ button {
     margin-top: 10px;
     font-size: 0.85rem;
     color: var(--color-gray-600);
+    font-weight: var(--fw-medium);
 }
 
 .btn-clear {
     width: 100%;
     padding: 10px;
-    background: #ffffff;
+    background: white;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-weight: var(--fw-medium);
@@ -296,11 +290,11 @@ button {
 }
 
 .btn-clear:hover {
-    background: var(--color-gray-100);
+    background: var(--color-gray-50);
 }
 
 /* ==========================================================================
-   6. PRODUCT CARDS
+   6. PRODUCT GRID & CARDS
    ========================================================================== */
 .product-grid {
     display: grid;
@@ -310,15 +304,16 @@ button {
 }
 
 .card {
-    background: #ffffff;
+    background: white;
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
     transition: box-shadow var(--transition);
+    cursor: pointer;
 }
 
 .card:hover {
-    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
 }
 
 .card-img {
@@ -372,9 +367,9 @@ button {
    7. FOOTER
    ========================================================================== */
 .footer {
-    background: #ffffff;
+    background: white;
     border-top: 1px solid var(--border);
-    padding: 80px 0 40px;
+    padding: 60px 0 40px;
     margin-top: 60px;
 }
 
@@ -383,7 +378,7 @@ button {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 40px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 .footer-col {
@@ -408,10 +403,21 @@ button {
     color: var(--color-primary);
 }
 
+.footer-brand {
+    flex: 1.5;
+}
+
+.brand-text {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 20px 0 24px;
+    max-width: 320px;
+}
+
 .social-links {
     display: flex;
     gap: 12px;
-    margin-top: 1.5rem;
 }
 
 .social-icon {
@@ -428,36 +434,88 @@ button {
 
 .social-icon:hover {
     background: var(--color-primary);
-    color: #ffffff;
+    color: white;
 }
 
-.btn-subscribe {
+.support-info {
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+}
+
+.support-phone {
+    font-weight: var(--fw-bold);
+    color: var(--color-text);
+    margin: 4px 0;
+}
+
+.footer-newsletter {
+    flex: 1.1;
+}
+
+.newsletter-text {
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+    margin-bottom: 20px;
+}
+
+.news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.news-form input {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.news-form button {
     background: var(--color-primary);
-    color: #ffffff;
+    color: white;
     padding: 12px;
     border-radius: 8px;
     font-weight: var(--fw-semibold);
-    width: 100%;
-    margin-top: 1rem;
     transition: background var(--transition);
 }
 
-.btn-subscribe:hover {
+.news-form button:hover {
     background: var(--color-primary-dark);
 }
 
 .footer-bottom {
     border-top: 1px solid var(--border);
-    padding-top: 30px;
+    padding-top: 40px;
     text-align: center;
+}
+
+.copyright {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.policy-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.policy-links a {
     color: var(--color-gray-600);
     font-size: 0.9rem;
 }
 
+.policy-links a:hover {
+    color: var(--color-primary);
+}
+
 /* ==========================================================================
-   8. UI COMPONENTS (Stars & Checkbox)
+   8. UI COMPONENTS (Stars & Checkboxes)
    ========================================================================== */
-/* Interactive star rating */
 .stars {
     display: inline-flex;
     gap: 2px;
@@ -480,14 +538,19 @@ button {
     fill: none;
 }
 
-/* Styled rating checkboxes */
+.rating-val {
+    color: var(--color-gray-600);
+    font-size: 0.85rem;
+    margin-left: 4px;
+}
+
 .checkbox-item {
     display: flex;
     align-items: center;
     gap: 10px;
-    cursor: pointer;
+    margin-bottom: 0.75rem;
     font-size: 0.95rem;
-    margin-bottom: 8px;
+    cursor: pointer;
 }
 
 .rating-checkbox {
@@ -495,7 +558,7 @@ button {
     -webkit-appearance: none;
     width: 18px;
     height: 18px;
-    background-color: #ffffff;
+    background-color: white;
     border: 1px solid #d1d5db;
     border-radius: 4px;
     display: grid;
@@ -532,16 +595,13 @@ button {
     .main-content {
         flex-direction: column;
     }
-    
     .filters {
         width: 100%;
         position: static;
     }
-    
     .nav {
         display: none;
     }
-    
     .footer-top {
         flex-direction: column;
     }

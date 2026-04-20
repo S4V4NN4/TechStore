@@ -5,15 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechStore | Premium Electronics</title>
     
+    <!-- CSS and Icons -->
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     
+    <!-- Scripts -->
     <script src="js/doubleslider.js" defer></script>
     <script src="js/productloader.js" defer></script>
 </head>
 <body>
 
-    <!-- Header Section -->
+    <!-- Header -->
     <header class="header">
         <div class="container header-wrap">
             <a href="index.html" class="logo">
@@ -36,13 +38,13 @@
     </header>
 
     <main class="container">
-        <!-- Page Title -->
+        <!-- Hero Section -->
         <section class="hero">
             <h1>Premium Electronics</h1>
             <p>Discover our curated collection of high-quality tech products</p>
         </section>
 
-        <!-- Product Toolbar (Count & Sort) -->
+        <!-- Toolbar -->
         <div class="toolbar">
             <div class="products-count">0 products</div>
             <div class="sorting">
@@ -55,29 +57,19 @@
             </div>
         </div>
 
-        <!-- Main Content Area -->
         <div class="main-content">
-            
-            <!-- Sidebar with Filters -->
+            <!-- Sidebar Filters -->
             <aside class="filters">
                 <div class="filter-card">
                     <h2 class="filter-title"><i data-lucide="sliders-horizontal"></i> Filters</h2>
                     
-                    <!-- Rating Filter -->
                     <div class="filter-group">
                         <h3>Rating</h3>
-                        <label class="checkbox-item">
-                            <input type="checkbox" class="rating-checkbox" value="5"> 5+ Stars
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" class="rating-checkbox" value="4"> 4+ Stars
-                        </label>
-                        <label class="checkbox-item">
-                            <input type="checkbox" class="rating-checkbox" value="3"> 3+ Stars
-                        </label>
+                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="5"> 5+ Stars</label>
+                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="4"> 4+ Stars</label>
+                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="3"> 3+ Stars</label>
                     </div>
 
-                    <!-- Price Filter -->
                     <div class="filter-group">
                         <h3>Price Range</h3>
                         <div class="slider-container">
@@ -86,13 +78,14 @@
                             <input type="range" min="0" max="3000" value="0" step="50" id="minPrice">
                             <input type="range" min="0" max="3000" value="3000" step="50" id="maxPrice">
                         </div>
+                        
                         <div class="price-labels">
                             <span id="minValue">$0</span>
                             <span id="maxValue">$3000</span>
                         </div>
                     </div>
 
-                    <button class="btn-clear">Clear All Filters</button>
+                    <button class="btn-clear" type="button">Clear All Filters</button>
                 </div>
             </aside>
 
@@ -101,60 +94,69 @@
         </div>
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-top">
-                <!-- Brand Identity -->
                 <div class="footer-col footer-brand">
                     <div class="logo">
                         <div class="logo-box">T</div>
                         <span>TechStore</span>
                     </div>
-                    <p class="brand-text">Your trusted destination for premium electronics. Quality products, competitive prices.</p>
+                    <p class="brand-text">
+                        Your trusted destination for premium electronics and tech accessories. 
+                        Quality products, competitive prices, exceptional service.
+                    </p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i data-lucide="facebook"></i></a>
                         <a href="#" class="social-icon"><i data-lucide="twitter"></i></a>
                         <a href="#" class="social-icon"><i data-lucide="instagram"></i></a>
+                        <a href="#" class="social-icon"><i data-lucide="youtube"></i></a>
                     </div>
                 </div>
 
-                <!-- Navigation Links -->
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <nav class="footer-nav">
                         <a href="#">Shop All Products</a>
                         <a href="#">Special Deals</a>
                         <a href="#">About Us</a>
+                        <a href="#">Contact Support</a>
                     </nav>
                 </div>
 
-                <!-- Support Info -->
                 <div class="footer-col">
                     <h4>Customer Service</h4>
                     <nav class="footer-nav">
+                        <a href="#">Shipping Information</a>
+                        <a href="#">Returns & Exchanges</a>
                         <a href="#">FAQ</a>
                         <a href="#">Track Order</a>
                     </nav>
                     <div class="support-info">
                         <p>Customer Support:</p>
                         <p class="support-phone">1-800-TECH-SHOP</p>
+                        <p class="support-email">support@techstore.com</p>
                     </div>
                 </div>
 
-                <!-- Newsletter Subscription -->
                 <div class="footer-col footer-newsletter">
                     <h4>Newsletter</h4>
-                    <p class="newsletter-text">Subscribe for special offers.</p>
+                    <p class="newsletter-text">Subscribe for special offers, free giveaways, and updates.</p>
                     <form class="news-form">
                         <input type="email" placeholder="Enter your email" required>
                         <button type="submit" class="btn-subscribe">Subscribe</button>
                     </form>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p class="copyright">© 2026 TechStore. All rights reserved.</p>
+                <div class="policy-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
             </div>
         </div>
     </footer>
