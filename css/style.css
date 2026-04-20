@@ -1,35 +1,435 @@
+/* ==========================================================================
+   1. ПЕРЕМЕННЫЕ (Design Tokens)
+   ========================================================================== */
 :root {
-    --blue-600: oklch(54.6% .245 262.881);
-    --gray-50: oklch(98.5% .002 247.839);
-    --gray-600: oklch(44.6% .03 256.802);
-    --border: #0000001a;
-    --radius: 0.625rem;
-    /* Адаптивные отступы */
-    --pad: 1rem;
-    --gap: 1.5rem;
+    /* Colors */
+    --color-primary: oklch(54.6% .245 262.881);
+    --color-primary-dark: oklch(48.8% .243 264.376);
+    --color-purple: oklch(55.8% .288 302.321);
+    --color-gray-50: oklch(98.5% .002 247.839);
+    --color-gray-100: oklch(96.7% .003 264.542);
+    --color-gray-200: oklch(92.8% .006 264.531);
+    --color-gray-600: oklch(44.6% .03 256.802);
+    --color-text: oklch(21% .034 264.665);
+    
+    /* Layout & UI */
+    --border: #e5e7eb;
+    --radius: 12px;
+    --container-max: 1600px;
+    --transition: 0.3s ease;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+    --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-purple));
+
+    /* Typography Weights */
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
 }
 
-@media (min-width: 1024px) { :root { --pad: 2rem; --gap: 2.5rem; } }
-
+/* ==========================================================================
+   2. СБРОС И БАЗОВЫЕ СТИЛИ
+   ========================================================================== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: system-ui, sans-serif; background: var(--gray-50); }
-.container { max-width: 1280px; margin: 0 auto; padding: 0 var(--pad); }
 
-.header { background: white; border-bottom: 1px solid var(--border); height: 64px; }
-.header-wrap { display: flex; align-items: center; justify-content: space-between; height: 100%; }
-.logo { display: flex; align-items: center; gap: 10px; font-weight: bold; text-decoration: none; color: black; }
-.logo-box { background: var(--blue-600); color: white; padding: 8px 12px; border-radius: 8px; }
+body { 
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--color-gray-50);
+    color: var(--color-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
 
-.main-layout { display: flex; flex-direction: column; gap: var(--gap); padding: var(--gap) 0; }
-@media (min-width: 1024px) { .main-layout { flex-direction: row; } }
+a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: color var(--transition); 
+}
 
-.sidebar { width: 100%; }
-@media (min-width: 1024px) { .sidebar { width: 260px; } }
+button { 
+    font-family: inherit; 
+    cursor: pointer; 
+    border: none; 
+    background: none; 
+}
 
-.product-grid { display: flex; flex-wrap: wrap; gap: var(--gap); }
-.card { background: white; border: 1px solid var(--border); border-radius: var(--radius); width: 100%; }
-@media (min-width: 640px) { .card { width: calc(50% - (var(--gap)/2)); } }
-@media (min-width: 1024px) { .card { width: calc(33.33% - (var(--gap)*2/3)); } }
+.container { 
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
 
-.footer { background: white; border-top: 1px solid var(--border); padding: 4rem 0; }
-.footer-grid { display: flex; flex-wrap: wrap; gap: var(--gap); justify-content: space-between; }
+/* ==========================================================================
+   3. ШАПКА (Header)
+   ========================================================================== */
+.header { 
+    background: white; 
+    border-bottom: 1px solid var(--border); 
+    box-shadow: var(--shadow-sm);
+    height: 64px; 
+    position: sticky; 
+    top: 0; 
+    z-index: 100; 
+}
+
+.header-wrap { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    height: 100%; 
+}
+
+.logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    font-weight: var(--fw-bold); 
+    font-size: 1.1rem; 
+}
+
+.logo-box { 
+    background: var(--gradient-brand); 
+    color: white; 
+    width: 38px; 
+    height: 38px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 1.3rem;
+}
+
+.nav { display: flex; gap: 2.5rem; }
+
+.nav a { 
+    color: var(--color-gray-600); 
+    font-weight: var(--fw-medium); 
+    font-size: 0.95rem; 
+}
+
+.nav a:hover { color: var(--color-primary); }
+
+.nav a.active { 
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: var(--fw-bold);
+}
+
+.actions { display: flex; gap: 0.5rem; }
+
+.icon-btn { 
+    color: var(--color-gray-600); 
+    padding: 8px; 
+    border-radius: 50%; 
+    transition: background var(--transition), color var(--transition); 
+}
+
+.icon-btn:hover { 
+    background: var(--color-gray-50); 
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   4. КОНТЕНТ (Hero, Toolbar, Layout)
+   ========================================================================== */
+.hero { padding: 3rem 0 1rem; }
+.hero h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.hero p { color: var(--color-gray-600); font-size: 1rem; }
+
+.toolbar { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1.5rem 0;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+}
+
+.sort-select { 
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    border: 1px solid var(--border); 
+    background: white; 
+    font-size: 0.9rem;
+    outline: none; 
+}
+
+.main-content { 
+    display: flex; 
+    gap: 3rem; 
+    padding-bottom: 5rem; 
+    align-items: flex-start;
+}
+
+/* ==========================================================================
+   5. ФИЛЬТРЫ (Sidebar)
+   ========================================================================== */
+.filters { width: 280px; flex-shrink: 0; position: sticky; top: 90px; }
+
+.filter-card { 
+    background: white; 
+    border: 1px solid var(--border); 
+    border-radius: var(--radius); 
+    padding: 1.5rem; 
+}
+
+.filter-title { 
+    font-size: 1.1rem; 
+    font-weight: var(--fw-semibold); 
+    margin-bottom: 1.5rem; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+
+.filter-group { margin-bottom: 2rem; }
+
+.filter-group h3 { 
+    font-size: 1rem; 
+    font-weight: var(--fw-bold); 
+    margin-bottom: 1rem; 
+}
+
+.checkbox-item { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    margin-bottom: 0.75rem; 
+    font-size: 0.95rem; 
+}
+
+.checkbox-item input { 
+    width: 18px; 
+    height: 18px; 
+    accent-color: black; 
+}
+
+.price-slider { 
+    appearance: none; 
+    width: 100%; 
+    height: 8px; 
+    background: black; 
+    border-radius: 10px; 
+    margin: 1.2rem 0; 
+}
+
+.price-slider::-webkit-slider-thumb { 
+    appearance: none; 
+    width: 20px; 
+    height: 20px; 
+    background: white; 
+    border: 2px solid black; 
+    border-radius: 50%; 
+}
+
+.btn-clear { 
+    width: 100%; 
+    padding: 10px; 
+    background: white; 
+    border: 1px solid var(--border); 
+    border-radius: 8px; 
+    font-size: 0.9rem; 
+    font-weight: var(--fw-medium); 
+    transition: background var(--transition); 
+}
+
+.btn-clear:hover { background: var(--color-gray-50); }
+
+/* ==========================================================================
+   6. СЕТКА ТОВАРОВ И КАРТОЧКИ
+   ========================================================================== */
+.product-grid { 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 2rem;
+    flex-grow: 1;
+}
+
+.card { 
+    background: white; 
+    border: 1px solid var(--border); 
+    border-radius: var(--radius); 
+    overflow: hidden; 
+    transition: box-shadow var(--transition);
+}
+
+.card:hover { box-shadow: var(--shadow-md); }
+
+.card-img { aspect-ratio: 1; overflow: hidden; background: #f3f4f6; }
+
+.card-img img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.card:hover .card-img img { transform: scale(1.08); }
+
+.card-body { padding: 1.5rem; }
+
+.card-title { 
+    font-size: 1.1rem; 
+    font-weight: var(--fw-semibold); 
+    margin-bottom: 0.5rem; 
+    color: #111; 
+}
+
+.stars { color: #facc15; }
+.rating-val { color: var(--color-gray-600); font-size: 0.85rem; margin-left: 4px; }
+
+.card-footer { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: baseline; 
+    margin-top: 1.5rem; 
+}
+
+.price { 
+    font-weight: var(--fw-bold); 
+    color: var(--color-primary); 
+    font-size: 1.3rem; 
+}
+
+.category { 
+    font-size: 0.75rem; 
+    color: var(--color-gray-600); 
+    text-transform: uppercase; 
+    font-weight: var(--fw-semibold); 
+}
+
+/* ==========================================================================
+   7. ПОДВАЛ (Footer)
+   ========================================================================== */
+.footer {
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 60px 0 40px;
+    margin-top: 60px;
+}
+
+.footer-top {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-col { flex: 1; min-width: 220px; }
+
+.footer-col h4 {
+    font-size: 1.1rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 24px;
+}
+
+.footer-nav a {
+    display: block;
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.footer-nav a:hover { color: var(--color-primary); }
+
+.footer-brand { flex: 1.5; }
+
+.brand-text {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 20px 0 24px;
+    max-width: 320px;
+}
+
+.social-links { display: flex; gap: 12px; }
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--color-gray-100);
+    color: var(--color-gray-600);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.social-icon:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.support-info {
+    margin-top: 24px;
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+}
+
+.support-phone {
+    font-weight: var(--fw-bold);
+    color: var(--color-text);
+    margin: 4px 0;
+}
+
+.footer-newsletter { flex: 1.1; }
+
+.newsletter-text {
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+    margin-bottom: 20px;
+}
+
+.news-form { display: flex; flex-direction: column; gap: 12px; }
+
+.news-form input {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.news-form button {
+    background: var(--color-primary);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: var(--fw-semibold);
+    transition: background var(--transition);
+}
+
+.news-form button:hover { background: var(--color-primary-dark); }
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    text-align: center;
+}
+
+.copyright {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+}
+
+.policy-links { display: flex; justify-content: center; gap: 20px; }
+
+.policy-links a { color: var(--color-gray-600); font-size: 0.9rem; }
+.policy-links a:hover { color: var(--color-primary); }
+
+/* ==========================================================================
+   8. АДАПТИВНОСТЬ
+   ========================================================================== */
+@media (max-width: 768px) {
+    .main-content { flex-direction: column; }
+    .filters { width: 100%; position: static; }
+    .nav { display: none; }
+    .footer-top { flex-direction: column; }
+}
