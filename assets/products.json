@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "name": "Portable Bluetooth Speaker",
+    "price": 129.99,
+    "category": "Audio",
+    "rating": 3.5,
+    "review_count": 128,
+    "images": [
+      "https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=800",
+      "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=800",
+      "https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800"
+    ],
+    "description": "Take your music anywhere with this powerful portable speaker. Delivers rich, immersive sound with deep bass. Waterproof design perfect for outdoor adventures.",
+    "highlights": ["20W <b>Output Power</b>", "15 Hours Battery Life", "IPX7 Water Rating"],
+    "technical_specs": {
+      "Bluetooth Version": "5.2",
+      "Weight": "0.8 kg",
+      "Dimensions": "18 x 7 x 7 cm",
+      "Charging Port": "USB-C"
+    },
+    "related": [2, 5, 6]
+  },
+  {
+    "id": 2,
+    "name": "Premium Wireless Headphones",
+    "price": 299.99,
+    "category": "Audio",
+    "rating": 5.0,
+    "review_count": 856,
+    "images": [
+      "https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=800",
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
+      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800"
+    ],
+    "description": "Experience crystal clear audio with our flagship wireless headphones. Features active noise cancellation and 40-hour battery life.",
+    "highlights": ["Active Noise Cancelling", "40H Battery Life", "Hi-Res Audio Support"],
+    "technical_specs": {
+      "Driver Size": "40 mm",
+      "Charging Time": "2 Hours",
+      "Weight": "250 g",
+      "Frequency Response": "10Hz - 40kHz"
+    },
+    "related": [1, 4, 3]
+  },
+  {
+    "id": 3,
+    "name": "Professional DSLR Camera",
+    "price": 2499.99,
+    "category": "Photography",
+    "rating": 4.8,
+    "review_count": 42,
+    "images": [
+      "https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=800",
+      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800",
+      "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800"
+    ],
+    "description": "Capture stunning photos and 4K videos with this professional-grade DSLR. Built for creators who demand the best quality.",
+    "highlights": ["45.7MP Full-Frame Sensor", "4K Video at 60fps", "Weather-Sealed Body"],
+    "technical_specs": {
+      "Sensor Type": "CMOS",
+      "ISO Range": "64 - 25600",
+      "Storage": "Dual SD Slots",
+      "Mount": "F-Mount"
+    },
+    "related": [4, 6, 2]
+  },
+  {
+    "id": 4,
+    "name": "Professional Laptop Pro",
+    "price": 1899.99,
+    "category": "Computers",
+    "rating": 4.5,
+    "review_count": 215,
+    "images": [
+      "https://images.unsplash.com/photo-1673431738089-c4fc9c2e96a7?w=800",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800",
+      "https://images.unsplash.com/photo-1611186871348-b1ec696e523b?w=800"
+    ],
+    "description": "The ultimate workstation for professionals. High-performance processing meets stunning design and all-day battery life.",
+    "highlights": ["M2 Pro Chip", "32GB Unified Memory", "Liquid Retina XDR Display"],
+    "technical_specs": {
+      "Storage": "1TB NVMe SSD",
+      "Battery": "Up to 18 Hours",
+      "Ports": "3x Thunderbolt 4, MagSafe 3",
+      "OS": "macOS"
+    },
+    "related": [6, 3, 5]
+  },
+  {
+    "id": 5,
+    "name": "Smart Fitness Watch Ultra",
+    "price": 449.99,
+    "category": "Wearables",
+    "rating": 4.0,
+    "review_count": 340,
+    "images": [
+      "https://images.unsplash.com/photo-1665860455418-017fa50d29bc?w=800",
+      "https://images.unsplash.com/photo-1544117518-30df57809ca7?w=800",
+      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800"
+    ],
+    "description": "Track your health and stay connected with the Smart Fitness Watch Ultra. Robust design with precise GPS tracking.",
+    "highlights": ["Always-On Retina Display", "Advanced Heart Sensors", "Up to 36H Battery Life"],
+    "technical_specs": {
+      "Case Material": "Titanium",
+      "Water Resistance": "100m",
+      "GPS": "Dual-Frequency L1/L5",
+      "Sensors": "SpO2, ECG, Temperature"
+    },
+    "related": [1, 2, 6]
+  },
+  {
+    "id": 6,
+    "name": "Ultra-Thin Tablet Pro",
+    "price": 799.99,
+    "category": "Tablets",
+    "rating": 4.5,
+    "review_count": 567,
+    "images": [
+      "https://images.unsplash.com/photo-1740637977676-c8040b41dc7a?w=800",
+      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800",
+      "https://images.unsplash.com/photo-1561154418-523f51461552?w=800"
+    ],
+    "description": "Incredibly thin and powerful. Perfect for sketching, multitasking, and entertainment on the go.",
+    "highlights": ["Ultra-Slim Design", "M1 Processing Power", "Pencil Support"],
+    "technical_specs": {
+      "Display": "11-inch Liquid Retina",
+      "Refresh Rate": "120Hz ProMotion",
+      "Front Camera": "12MP Ultra Wide",
+      "Connectivity": "Wi-Fi 6E, 5G"
+    },
+    "related": [4, 5, 3]
+  }
+]

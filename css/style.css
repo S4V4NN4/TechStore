@@ -1,0 +1,705 @@
+/* ==========================================================================
+   1. DESIGN TOKENS
+   ========================================================================== */
+:root {
+    --color-primary: oklch(54.6% .245 262.881);
+    --color-primary-dark: oklch(48.8% .243 264.376);
+    --color-purple: oklch(55.8% .288 302.321);
+    --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-purple));
+    --color-gray-50: oklch(98.5% .002 247.839);
+    --color-gray-100: oklch(96.7% .003 264.542);
+    --color-gray-200: oklch(92.8% .006 264.531);
+    --color-gray-600: oklch(44.6% .03 256.802);
+    --color-text: oklch(21% .034 264.665);
+    --border: #e5e7eb;
+    --radius: 12px;
+    --container-max: 1600px;
+    --transition: 0.3s ease;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
+    --shadow-md: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   2. BASE STYLES
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background-color: var(--color-gray-50);
+    color: var(--color-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color var(--transition);
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+/* ==========================================================================
+   3. HEADER
+   ========================================================================== */
+.header {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: var(--fw-bold);
+    font-size: 1.1rem;
+}
+
+.logo-box {
+    background: var(--gradient-brand);
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.nav {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav a {
+    color: var(--color-gray-600);
+    font-weight: var(--fw-medium);
+    font-size: 0.95rem;
+}
+
+.nav a:hover {
+    color: var(--color-primary);
+}
+
+.nav a.active {
+    background: var(--gradient-brand);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: var(--fw-bold);
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: nowrap; /* Гарантирует одну строку */
+}
+
+.icon-btn {
+    color: var(--color-gray-600);
+    padding: 8px;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.icon-btn:hover {
+    background: var(--color-gray-50);
+    color: var(--color-primary);
+}
+
+.burger-btn {
+    display: none;
+}
+
+/* ==========================================================================
+   4. HERO & TOOLBAR
+   ========================================================================== */
+.hero {
+    padding: 3rem 0 1rem;
+}
+
+.hero h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero p {
+    color: var(--color-gray-600);
+    font-size: 1rem;
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
+    color: var(--color-gray-600);
+}
+
+.toolbar-left-group {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.filter-mobile-btn {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: white;
+    font-weight: var(--fw-medium);
+    color: var(--color-text);
+}
+
+.sorting {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.sort-select {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: white;
+    outline: none;
+}
+
+/* ==========================================================================
+   5. FILTERS (Desktop)
+   ========================================================================== */
+.main-content {
+    display: flex;
+    gap: 3rem;
+    padding-bottom: 5rem;
+    align-items: flex-start;
+}
+
+.filters {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 90px;
+}
+
+.filter-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.filter-header-mobile {
+    display: block;
+}
+
+.filter-close-btn {
+    display: none;
+}
+
+.filter-title {
+    font-size: 1.1rem;
+    font-weight: var(--fw-semibold);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.filter-group {
+    margin-bottom: 2.5rem;
+}
+
+.filter-group h3 {
+    font-size: 1rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 1rem;
+}
+
+/* Slider UI */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.slider-track {
+    position: absolute;
+    width: 100%;
+    height: 6px;
+    background: var(--color-gray-200);
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.slider-range {
+    position: absolute;
+    height: 6px;
+    background: black;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.slider-container input[type="range"] {
+    position: absolute;
+    width: 100%;
+    pointer-events: none;
+    appearance: none;
+    background: none;
+    z-index: 3;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.slider-container input[type="range"]::-webkit-slider-thumb {
+    pointer-events: auto;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.price-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: var(--color-gray-600);
+    font-weight: var(--fw-medium);
+}
+
+.btn-clear {
+    width: 100%;
+    padding: 10px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-weight: var(--fw-medium);
+    margin-top: 1.5rem;
+    transition: background var(--transition);
+}
+
+.btn-clear:hover {
+    background: var(--color-gray-50);
+}
+
+/* ==========================================================================
+   6. PRODUCT GRID & CARDS
+   ========================================================================== */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+    flex-grow: 1;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow var(--transition);
+    cursor: pointer;
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.card-img {
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #f3f4f6;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .card-img img {
+    transform: scale(1.08);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: var(--fw-semibold);
+    margin-bottom: 0.5rem;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 1.5rem;
+}
+
+.price {
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+    font-size: 1.3rem;
+}
+
+.category {
+    font-size: 0.75rem;
+    color: var(--color-gray-600);
+    text-transform: uppercase;
+    font-weight: var(--fw-semibold);
+}
+
+/* ==========================================================================
+   7. FOOTER
+   ========================================================================== */
+.footer {
+    background: white;
+    border-top: 1px solid var(--border);
+    padding: 60px 0 40px;
+    margin-top: 60px;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.footer-col h4 {
+    font-size: 1.1rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 24px;
+}
+
+.footer-nav a {
+    display: block;
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.footer-nav a:hover {
+    color: var(--color-primary);
+}
+
+.brand-text {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 20px 0 24px;
+    max-width: 320px;
+}
+
+.social-links {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--color-gray-100);
+    color: var(--color-gray-600);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+}
+
+.social-icon:hover {
+    background: var(--color-primary);
+    color: white;
+}
+
+.news-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.news-form input {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 0.95rem;
+    outline: none;
+}
+
+.news-form button {
+    background: var(--color-primary);
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: var(--fw-semibold);
+    transition: background var(--transition);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+}
+
+.policy-links {
+    display: flex;
+    gap: 20px;
+}
+
+.policy-links a {
+    color: var(--color-gray-600);
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   8. UI COMPONENTS (Stars & Checkboxes)
+   ========================================================================== */
+.stars {
+    display: inline-flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.stars svg {
+    width: 16px;
+    height: 16px;
+    stroke: #facc15;
+    stroke-width: 2px;
+}
+
+.stars svg.fill-current {
+    fill: #facc15;
+}
+
+.stars svg.empty {
+    stroke: #e5e7eb;
+    fill: none;
+}
+
+.rating-val {
+    color: var(--color-gray-600);
+    font-size: 0.85rem;
+    margin-left: 4px;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.rating-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.rating-checkbox:checked {
+    background-color: var(--color-text);
+    border-color: var(--color-text);
+}
+
+.rating-checkbox::before {
+    content: "";
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: scale(0) rotate(45deg);
+    transition: 120ms;
+    margin-bottom: 2px; 
+}
+
+.rating-checkbox:checked::before {
+    transform: scale(1) rotate(45deg);
+}
+
+/* ==========================================================================
+   9. SCALABILITY (Responsive Logic)
+   ========================================================================== */
+
+/* MEDIUM SCREENS */
+@media (max-width: 1024px) {
+    .burger-btn {
+        display: flex;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 1.5rem 2rem;
+        gap: 1rem;
+        border-bottom: 1px solid var(--border);
+        box-shadow: var(--shadow-md);
+        z-index: 100;
+    }
+
+    .nav.active {
+        display: flex;
+    }
+
+    .filter-mobile-btn {
+        display: flex;
+    }
+
+    /* Modal Filters */
+    .filters {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        background: white;
+        z-index: 2000;
+        padding: 1.5rem;
+        box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+        overflow-y: auto;
+    }
+
+    .filters.active {
+        display: block;
+    }
+
+    .filter-card {
+        border: none;
+        padding: 0;
+    }
+
+    .filter-header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .filter-close-btn {
+        display: flex;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Footer 2 columns 2 rows */
+    .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* SMALL SCREENS */
+@media (max-width: 640px) {
+    .logo-text {
+        display: none;
+    }
+
+    .toolbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .toolbar-left-group {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .sort-select {
+        width: auto;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer full vertical */
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .policy-links {
+        justify-content: center;
+    }
+}
