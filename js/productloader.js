@@ -32,14 +32,12 @@ function renderProducts(products) {
     const container = document.getElementById('productGrid');
     if (!container) return;
 
-    if (products.length === 0) {
-        container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; padding: 3rem; color: gray;">No gadgets found in this range.</p>`;
-        return;
-    }
-
     container.innerHTML = products.map(product => `
-        <article class="card">
-            <div class="card-img"><img src="${product.image}" alt="${product.name}"></div>
+        <article class="card" onclick="window.location.href='product.html?id=${product.id}'">
+            <div class="card-img">
+                <!-- Берем первую картинку из массива изображений -->
+                <img src="${product.images[0]}" alt="${product.name}">
+            </div>
             <div class="card-body">
                 <h4 class="card-title">${product.name}</h4>
                 <div class="rating">
@@ -53,7 +51,6 @@ function renderProducts(products) {
             </div>
         </article>
     `).join('');
-    
     lucide.createIcons();
 }
 
@@ -63,10 +60,8 @@ function applyFiltersAndSort() {
     const maxPrice = parseInt(document.getElementById("maxPrice")?.value || 3000);
     const sortValue = document.getElementById("sortSelect")?.value || "name";
 
-    // 1. Filter by price
     let results = allProducts.filter(p => p.price >= minPrice && p.price <= maxPrice);
 
-    // 2. Filter by Rating
     const checkedRatings = Array.from(document.querySelectorAll('.rating-checkbox:checked'))
                                 .map(cb => parseInt(cb.value));
     
@@ -75,7 +70,6 @@ function applyFiltersAndSort() {
         results = results.filter(p => p.rating >= minSelected);
     }
 
-    // 3. Sorting
     if (sortValue === "low") {
         results.sort((a, b) => a.price - b.price);
     } else if (sortValue === "high") {
@@ -86,24 +80,19 @@ function applyFiltersAndSort() {
 
     renderProducts(results);
 
-    // Update count display
     const countElem = document.querySelector('.products-count');
     if (countElem) countElem.textContent = `${results.length} products`;
 }
 
-// Setup Event Listeners
 document.addEventListener('DOMContentLoaded', () => {
     document.getElementById("sortSelect")?.addEventListener("change", applyFiltersAndSort);
-
     document.querySelectorAll(".rating-checkbox").forEach(cb => {
         cb.addEventListener("change", applyFiltersAndSort);
     });
-
     document.querySelector(".btn-clear")?.addEventListener("click", () => {
         document.getElementById("minPrice").value = 0;
         document.getElementById("maxPrice").value = 3000;
         document.querySelectorAll('.rating-checkbox').forEach(cb => cb.checked = false);
-        
         if (window.updateSliderUI) window.updateSliderUI();
         applyFiltersAndSort(); 
     });
