@@ -12,6 +12,7 @@
     <!-- Scripts -->
     <script src="js/doubleslider.js" defer></script>
     <script src="js/productloader.js" defer></script>
+    <script src="js/ui.js" defer></script>
 </head>
 <body>
 
@@ -20,10 +21,10 @@
         <div class="container header-wrap">
             <a href="index.html" class="logo">
                 <div class="logo-box">T</div>
-                <span>TechStore</span>
+                <span class="logo-text">TechStore</span>
             </a>
             
-            <nav class="nav">
+            <nav class="nav" id="navMenu">
                 <a href="index.html" class="active">Products</a>
                 <a href="#">Categories</a>
                 <a href="#">Deals</a>
@@ -33,6 +34,9 @@
             <div class="actions">
                 <button class="icon-btn" aria-label="Search"><i data-lucide="search"></i></button>
                 <button class="icon-btn" aria-label="Cart"><i data-lucide="shopping-cart"></i></button>
+                <button class="icon-btn burger-btn" id="burgerBtn">
+                    <i data-lucide="menu"></i>
+                </button>
             </div>
         </div>
     </header>
@@ -46,7 +50,13 @@
 
         <!-- Toolbar -->
         <div class="toolbar">
-            <div class="products-count">0 products</div>
+            <div class="toolbar-left-group">
+                <button class="filter-mobile-btn" id="filterOpenBtn">
+                    <i data-lucide="sliders-horizontal"></i> Filters
+                </button>
+                <div class="products-count">0 products</div>
+            </div>
+            
             <div class="sorting">
                 <span>Sort by:</span>
                 <select class="sort-select" id="sortSelect">
@@ -59,9 +69,14 @@
 
         <div class="main-content">
             <!-- Sidebar Filters -->
-            <aside class="filters">
+            <aside class="filters" id="sidebarFilters">
                 <div class="filter-card">
-                    <h2 class="filter-title"><i data-lucide="sliders-horizontal"></i> Filters</h2>
+                    <div class="filter-header-mobile">
+                        <h2 class="filter-title"><i data-lucide="sliders-horizontal"></i> Filters</h2>
+                        <button class="filter-close-btn" id="filterCloseBtn">
+                            <i data-lucide="x"></i>
+                        </button>
+                    </div>
                     
                     <div class="filter-group">
                         <h3>Rating</h3>
@@ -160,7 +175,5 @@
             </div>
         </div>
     </footer>
-
-    <script>lucide.createIcons();</script>
 </body>
 </html>
