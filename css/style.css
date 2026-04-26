@@ -246,6 +246,7 @@ img {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     padding: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .filter-header-mobile {
@@ -1309,5 +1310,297 @@ img {
     
     .story-section h2 {
         font-size: 1.3rem;
+    }
+}
+
+
+
+
+/* ==========================================================================
+   14. SHOPPING CART PAGE (REFACTORED)
+   ========================================================================== */
+
+/* 14.1 Layout */
+.cart-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
+
+/* 14.2 Cart Item Card */
+.cart-item {
+    display: flex;
+    gap: 1.5rem;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.cart-item-img {
+    width: 140px !important;
+    height: 140px !important;
+    flex-shrink: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--color-gray-50);
+}
+
+.cart-item-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+.cart-item-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-item-header h3 { 
+    margin: 0 0 4px 0; 
+    font-size: 1.1rem; 
+    font-weight: 600;
+}
+
+.cart-item-header .category { 
+    font-size: 0.8rem; 
+    color: var(--color-gray-600); 
+    text-transform: uppercase; 
+}
+
+.remove-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    color: #9ca3af;
+}
+
+.cart-item-price-block {
+    display: flex;
+    position: absolute;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    flex-direction: column;
+    text-align: right;
+}
+
+.cart-item-price-block .price {
+    font-size: 1.35rem;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+/* 14.3 Order Summary (Островок 1) */
+.cart-sidebar .filter-card {
+    padding: 1.5rem !important; /* Гарантируем внутренние отступы карточки */
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem; /* Отступ между строками Subtotal/Tax */
+}
+
+.summary-row .label { color: var(--color-gray-600); }
+.summary-row .value { font-weight: 600; }
+
+.summary-divider {
+    height: 1px;
+    background-color: var(--border);
+    margin: 1.5rem 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem; /* Отступ перед промокодом */
+}
+
+.summary-total span:first-child { font-weight: 700; font-size: 1.1rem; }
+.summary-total .price { font-size: 1.4rem; color: var(--color-primary); font-weight: 700; }
+
+/* 14.4 Promo Code */
+.promo-group {
+    margin-bottom: 2rem; /* Отступ перед большой синей кнопкой */
+}
+
+.promo-group h4 { margin-bottom: 12px; font-size: 0.9rem; }
+
+.promo-form {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.promo-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+}
+
+.btn-apply {
+    background: #1f2937;
+    color: white;
+    padding: 0 20px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+.promo-hint {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+/* 14.5 Shipping Info (Островок 2) */
+.shipping-info-card {
+    margin-top: 1.5rem; /* Расстояние между Summary и Shipping */
+}
+
+.shipping-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem; /* Отступ под заголовком */
+}
+
+.shipping-header h3 { margin: 0; font-size: 1rem; }
+
+.shipping-detail {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 1.5rem; /* Отступ между блоками информации */
+}
+
+/* Чиним слипшийся текст из-за p {margin: 0} */
+.shipping-label {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 6px !important;
+    display: block;
+    color: var(--color-text);
+}
+
+.shipping-value {
+    color: var(--color-gray-600);
+    line-height: 1.6;
+    margin: 0 !important;
+}
+
+.shipping-footer-divider {
+    border-top: 1px solid var(--border);
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+}
+
+.free-shipping-tag {
+    color: #10b981;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: block;
+    margin-top: 8px;
+}
+
+/* 14.6 Button Proceed */
+.btn-checkout-main {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.unit-price {
+    font-size: 0.85rem; /* Мелкий шрифт */
+    color: var(--color-gray-600);
+    margin-top: 2px;
+}
+
+.empty-cart-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 400px;
+    width: 100%;
+}
+
+.empty-cart-wrapper h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--color-text);
+}
+
+.empty-cart-wrapper p {
+    color: var(--color-gray-600);
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.btn-continue-shopping {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.btn-continue-shopping:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* 14.8 Responsive */
+@media (max-width: 1024px) {
+    .cart-container { grid-template-columns: 1fr; }
+    
+    .cart-sidebar {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; /* Расстояние между островками на планшетах */
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .cart-item-img {
+        width: 100% !important;
+        height: 200px !important;
+        border-radius: 0;
+    }
+
+    .cart-item-info { padding: 1.5rem; }
+
+    .cart-item-price-block {
+        position: static;
+        margin-top: 1.5rem;
+        text-align: right;
+    }
+    
+    /* Добавляем боковые отступы всей корзине на мобилках */
+    .cart-container {
+        padding: 0 15px;
     }
 }

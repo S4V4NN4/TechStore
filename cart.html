@@ -3,14 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore | Premium Electronics</title>
-    
+    <title>Shopping Cart | TechStore</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script src="js/doubleslider.js" defer></script>
-    <script src="js/productloader.js" defer></script>
-    <script src="js/ui.js" defer></script>
+    <script src="js/cart.js" defer></script>
 </head>
 <body>
 
@@ -23,7 +19,7 @@
             </a>
             
             <nav class="nav" id="navMenu">
-                <a href="index.html" class="active">Products</a>
+                <a href="index.html">Products</a>
                 <a href="categories.html">Categories</a>
                 <a href="deals.html">Deals</a>
                 <a href="about.html">About</a>
@@ -40,70 +36,73 @@
     </header>
 
     <main class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Premium Electronics</h1>
-            <p>Discover our curated collection of high-quality tech products</p>
+        <section class="hero" id="cartHero">
+            <h1>Shopping Cart</h1>
         </section>
 
-        <!-- Toolbar -->
-        <div class="toolbar">
-            <div class="toolbar-left-group">
-                <button class="filter-mobile-btn" id="filterOpenBtn">
-                    <i data-lucide="sliders-horizontal"></i> Filters
-                </button>
-                <div class="products-count">0 products</div>
-            </div>
-            
-            <div class="sorting">
-                <span>Sort by:</span>
-                <select class="sort-select" id="sortSelect">
-                    <option value="name">Name (A-Z)</option>
-                    <option value="low">Price: Low to High</option>
-                    <option value="high">Price: High to Low</option>
-                </select>
-            </div>
-        </div>
+        <div class="cart-container" id="cartMainContainer">
+            <div class="cart-items-list" id="cartItemsList"></div>
 
-        <div class="main-content">
-            <!-- Sidebar Filters -->
-            <aside class="filters" id="sidebarFilters">
-                <div class="filter-card">
-                    <div class="filter-header-mobile">
-                        <h2 class="filter-title"><i data-lucide="sliders-horizontal"></i> Filters</h2>
-                        <button class="filter-close-btn" id="filterCloseBtn">
-                            <i data-lucide="x"></i>
-                        </button>
+            <div class="cart-sidebar">
+                <aside class="filter-card">
+                    <h3 class="filter-title">Order Summary</h3>
+                    
+                    <div class="summary-row">
+                        <span class="label">Subtotal</span>
+                        <span class="value" id="subtotal">$0.00</span>
                     </div>
                     
-                    <div class="filter-group">
-                        <h3>Rating</h3>
-                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="5"> 5+ Stars</label>
-                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="4"> 4+ Stars</label>
-                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="3"> 3+ Stars</label>
+                    <div class="summary-row">
+                        <span class="label">Tax (8%)</span>
+                        <span class="value" id="tax">$0.00</span>
                     </div>
 
-                    <div class="filter-group">
-                        <h3>Price Range</h3>
-                        <div class="slider-container">
-                            <div class="slider-track"></div>
-                            <div id="sliderRange" class="slider-range"></div>
-                            <input type="range" min="0" max="3000" value="0" step="50" id="minPrice">
-                            <input type="range" min="0" max="3000" value="3000" step="50" id="maxPrice">
+                    <div class="summary-divider"></div>
+
+                    <div class="summary-total">
+                        <span>Total</span>
+                        <span class="price" id="totalPrice">$0.00</span>
+                    </div>
+
+                    <div class="promo-group">
+                        <h4>Promo Code</h4>
+                        <div class="promo-form">
+                            <input type="text" class="promo-input" placeholder="Enter code">
+                            <button type="button" class="btn-apply">Apply</button>
                         </div>
-                        
-                        <div class="price-labels">
-                            <span id="minValue">$0</span>
-                            <span id="maxValue">$3000</span>
+                        <p class="promo-hint">Try code "SAVE10" for 10% off</p>
+                    </div>
+
+                    <button class="btn-checkout-main">
+                        Proceed to Checkout
+                    </button>
+                </aside>
+
+                <!-- Информация о доставке -->
+                <div class="filter-card shipping-info-card">
+                    <div class="shipping-header">
+                        <i data-lucide="truck"></i>
+                        <h3>Shipping Information</h3>
+                    </div>
+                    
+                    <div class="shipping-detail">
+                        <i data-lucide="map-pin"></i>
+                        <div class="shipping-text">
+                            <p class="shipping-label">Delivery Address</p>
+                            <p class="shipping-value">
+                                123 Tech Street<br>
+                                San Francisco, CA 94105
+                            </p>
                         </div>
                     </div>
 
-                    <button class="btn-clear" type="button">Clear All Filters</button>
+                    <div class="shipping-footer-divider">
+                        <p class="shipping-label">Estimated Delivery</p>
+                        <p class="shipping-value">3-5 business days</p>
+                        <span class="free-shipping-tag">Free shipping on orders over $50</span>
+                    </div>
                 </div>
-            </aside>
-
-            <!-- Product Grid -->
-            <section class="product-grid" id="productGrid"></section>
+            </div>
         </div>
     </main>
 
@@ -173,5 +172,7 @@
             </div>
         </div>
     </footer>
+
+    <script>lucide.createIcons();</script>
 </body>
 </html>
