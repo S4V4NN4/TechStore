@@ -2,22 +2,31 @@
    1. DESIGN TOKENS
    ========================================================================== */
 :root {
+    /* Brand Colors */
     --color-primary: oklch(54.6% .245 262.881);
     --color-primary-dark: oklch(48.8% .243 264.376);
     --color-purple: oklch(55.8% .288 302.321);
     --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-purple));
+
+    /* UI Colors */
     --color-gray-50: oklch(98.5% .002 247.839);
     --color-gray-100: oklch(96.7% .003 264.542);
     --color-gray-200: oklch(92.8% .006 264.531);
     --color-gray-600: oklch(44.6% .03 256.802);
     --color-text: oklch(21% .034 264.665);
+
+    /* Layout & Animation */
     --border: #e5e7eb;
     --radius: 12px;
     --container-max: 1600px;
     --transition: 0.3s ease;
+
+    /* Typography */
     --fw-medium: 500;
     --fw-semibold: 600;
     --fw-bold: 700;
+
+    /* Shadows */
     --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.02);
     --shadow-md: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
 }
@@ -59,8 +68,13 @@ button {
     background: none;
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 /* ==========================================================================
-   3. HEADER
+   3. HEADER & NAVIGATION
    ========================================================================== */
 .header {
     background: white;
@@ -79,6 +93,7 @@ button {
     height: 100%;
 }
 
+/* Logo */
 .logo {
     display: flex;
     align-items: center;
@@ -99,6 +114,7 @@ button {
     font-size: 1.3rem;
 }
 
+/* Navigation Links */
 .nav {
     display: flex;
     gap: 2.5rem;
@@ -122,11 +138,12 @@ button {
     font-weight: var(--fw-bold);
 }
 
+/* Header Actions */
 .actions {
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-wrap: nowrap; /* Гарантирует одну строку */
+    flex-wrap: nowrap;
 }
 
 .icon-btn {
@@ -146,7 +163,7 @@ button {
 }
 
 /* ==========================================================================
-   4. HERO & TOOLBAR
+   4. PRODUCT LISTING (HERO & TOOLBAR)
    ========================================================================== */
 .hero {
     padding: 3rem 0 1rem;
@@ -204,7 +221,7 @@ button {
 }
 
 /* ==========================================================================
-   5. FILTERS (Desktop)
+   5. FILTERS & SIDEBAR
    ========================================================================== */
 .main-content {
     display: flex;
@@ -254,7 +271,7 @@ button {
     margin-bottom: 1rem;
 }
 
-/* Slider UI */
+/* Range Slider UI */
 .slider-container {
     position: relative;
     width: 100%;
@@ -350,6 +367,7 @@ button {
     box-shadow: var(--shadow-md);
 }
 
+/* Card Image Animation */
 .card-img {
     aspect-ratio: 1;
     overflow: hidden;
@@ -398,7 +416,82 @@ button {
 }
 
 /* ==========================================================================
-   7. FOOTER
+   7. UI COMPONENTS (STARS & CHECKBOXES)
+   ========================================================================== */
+.stars {
+    display: inline-flex;
+    gap: 2px;
+    align-items: center;
+}
+
+.stars svg {
+    width: 16px;
+    height: 16px;
+    stroke: #facc15;
+    stroke-width: 2px;
+}
+
+.stars svg.fill-current {
+    fill: #facc15;
+}
+
+.stars svg.empty {
+    stroke: #e5e7eb;
+    fill: none;
+}
+
+.rating-val {
+    color: var(--color-gray-600);
+    font-size: 0.85rem;
+    margin-left: 4px;
+}
+
+/* Custom Checkbox UI */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.rating-checkbox {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: 0.2s all;
+}
+
+.rating-checkbox:checked {
+    background-color: var(--color-text);
+    border-color: var(--color-text);
+}
+
+.rating-checkbox::before {
+    content: "";
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: scale(0) rotate(45deg);
+    transition: 120ms;
+    margin-bottom: 2px; 
+}
+
+.rating-checkbox:checked::before {
+    transform: scale(1) rotate(45deg);
+}
+
+/* ==========================================================================
+   8. FOOTER
    ========================================================================== */
 .footer {
     background: white;
@@ -508,85 +601,339 @@ button {
 }
 
 /* ==========================================================================
-   8. UI COMPONENTS (Stars & Checkboxes)
+   9. PRODUCT PAGE (DETAIL VIEW)
    ========================================================================== */
-.stars {
-    display: inline-flex;
-    gap: 2px;
+
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
     align-items: center;
-}
-
-.stars svg {
-    width: 16px;
-    height: 16px;
-    stroke: #facc15;
-    stroke-width: 2px;
-}
-
-.stars svg.fill-current {
-    fill: #facc15;
-}
-
-.stars svg.empty {
-    stroke: #e5e7eb;
-    fill: none;
-}
-
-.rating-val {
+    gap: 8px;
+    padding: 1.5rem 0;
+    font-size: 0.9rem;
     color: var(--color-gray-600);
-    font-size: 0.85rem;
-    margin-left: 4px;
 }
 
-.checkbox-item {
+.breadcrumbs i {
+    width: 14px;
+    height: 14px;
+}
+
+.breadcrumbs .current {
+    color: var(--color-text);
+    font-weight: var(--fw-semibold);
+}
+
+/* Gallery & Info Layout */
+.product-layout {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 4rem;
+    margin-bottom: 5rem;
+}
+
+.main-image {
+    aspect-ratio: 1;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+}
+
+.main-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.thumbs-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.thumb {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    overflow: hidden;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.thumb.active {
+    border-color: var(--color-primary);
+}
+
+.thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Info Side */
+.product-title {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+}
+
+.rating-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 1.5rem;
+}
+
+.review-count {
+    font-size: 0.85rem;
+    color: var(--color-gray-600);
+}
+
+.product-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.price-val {
+    font-size: 2.5rem;
+    font-weight: var(--fw-bold);
+    color: var(--color-primary);
+}
+
+.shipping-tag {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+}
+
+.highlights-box {
+    background: #f0f7ff;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    margin-bottom: 2rem;
+}
+
+.highlights-box h4 {
+    margin-bottom: 0.75rem;
+}
+
+.highlights-box ul {
+    list-style: none;
+}
+
+.highlights-box li {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 0.75rem;
-    font-size: 0.95rem;
-    cursor: pointer;
 }
 
-.rating-checkbox {
-    appearance: none;
-    -webkit-appearance: none;
+.highlights-box li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background: var(--color-primary);
+    border-radius: 50%;
+}
+
+.product-description p {
+    color: var(--color-gray-600);
+    line-height: 1.7;
+    margin: 0.5rem 0 2.5rem;
+}
+
+/* Controls */
+.purchase-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.qty-picker-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.qty-picker {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: max-content;
+    background: white;
+}
+
+.qty-picker button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
+}
+
+.qty-picker span {
+    width: 50px;
+    text-align: center;
+    font-weight: var(--fw-bold);
+}
+
+.btn-add-cart {
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--color-primary);
+    color: white;
+    font-weight: var(--fw-bold);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: var(--transition);
+    font-size: 1.1rem;
+}
+
+.btn-add-cart:hover {
+    background: var(--color-primary-dark);
+}
+
+/* Specs Accordion */
+.specs-accordion {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.specs-accordion.open {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.specs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1.5rem;
+    cursor: pointer;
+    font-weight: var(--fw-semibold);
+}
+
+.specs-header i {
     width: 18px;
     height: 18px;
-    background-color: white;
-    border: 1px solid #d1d5db;
-    border-radius: 4px;
-    display: grid;
-    place-content: center;
-    cursor: pointer;
-    transition: 0.2s all;
+    transition: transform 0.3s ease;
+    color: var(--color-gray-600);
 }
 
-.rating-checkbox:checked {
-    background-color: var(--color-text);
-    border-color: var(--color-text);
+.specs-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
 }
 
-.rating-checkbox::before {
-    content: "";
-    width: 5px;
-    height: 10px;
-    border: solid white;
-    border-width: 0 2px 2px 0;
-    transform: scale(0) rotate(45deg);
-    transition: 120ms;
-    margin-bottom: 2px; 
+.spec-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1.1rem 1.5rem;
+    border-top: 1px solid var(--color-gray-100);
 }
 
-.rating-checkbox:checked::before {
-    transform: scale(1) rotate(45deg);
+.spec-label {
+    font-weight: var(--fw-medium);
+}
+
+.spec-value {
+    color: var(--color-gray-600);
+}
+
+/* Related section */
+.related-section {
+    padding-top: 4rem;
+}
+
+.section-title {
+    margin-bottom: 2.5rem;
+    font-size: 1.8rem;
 }
 
 /* ==========================================================================
-   9. SCALABILITY (Responsive Logic)
+   10. CATEGORIES PAGE
+   ========================================================================== */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+    padding-bottom: 5rem;
+}
+
+.cat-card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: white;
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--border);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.cat-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.cat-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.cat-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cat-card:hover .cat-image img {
+    transform: scale(1.1);
+}
+
+/* Overlay Info */
+.cat-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.8) 0%, 
+        rgba(0, 0, 0, 0.2) 60%, 
+        transparent 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 2rem;
+    color: white;
+}
+
+.cat-content h3 {
+    font-size: 1.5rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 4px;
+}
+
+.cat-count {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   11. SCALABILITY & RESPONSIVE
    ========================================================================== */
 
-/* MEDIUM SCREENS */
+/* MEDIUM SCREENS (Tablet / Small Laptop) */
 @media (max-width: 1024px) {
+    /* Header Burger */
     .burger-btn {
         display: flex;
     }
@@ -610,17 +957,17 @@ button {
         display: flex;
     }
 
+    /* Filters drawer logic */
     .filter-mobile-btn {
         display: flex;
     }
 
-    /* Modal Filters */
     .filters {
         display: none;
         position: fixed;
         top: 0;
         left: 0;
-        width: 50%;
+        width: 50%; /* 50% ширина */
         height: 100%;
         background: white;
         z-index: 2000;
@@ -649,6 +996,7 @@ button {
         display: flex;
     }
 
+    /* Listing Page Layout */
     .main-content {
         flex-direction: column;
     }
@@ -657,13 +1005,25 @@ button {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Footer 2 columns 2 rows */
+    /* Product Detail Layout */
+    .product-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    /* Categories Layout */
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Footer Layout */
     .footer-top {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* SMALL SCREENS */
+/* SMALL SCREENS (Phones) */
 @media (max-width: 640px) {
     .logo-text {
         display: none;
@@ -684,13 +1044,14 @@ button {
         width: auto;
     }
 
-    .product-grid {
+    .product-grid,
+    .category-grid,
+    .footer-top {
         grid-template-columns: 1fr;
     }
 
-    /* Footer full vertical */
-    .footer-top {
-        grid-template-columns: 1fr;
+    .cat-card {
+        aspect-ratio: 16 / 9;
     }
 
     .footer-bottom {

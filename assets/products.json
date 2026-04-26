@@ -5,19 +5,21 @@
     "price": 129.99,
     "category": "Audio",
     "rating": 3.5,
-    "review_count": 128,
+    "review_count": 327,
     "images": [
       "https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=800",
-      "https://images.unsplash.com/photo-1608156639585-b3a032ef9689?w=800",
-      "https://images.unsplash.com/photo-1589003077984-894e133dabab?w=800"
+      "https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=800",
+      "https://images.unsplash.com/photo-1674303324806-7018a739ed11?w=800"
     ],
-    "description": "Take your music anywhere with this powerful portable speaker. Delivers rich, immersive sound with deep bass. Waterproof design perfect for outdoor adventures.",
-    "highlights": ["20W <b>Output Power</b>", "15 Hours Battery Life", "IPX7 Water Rating"],
+    "description": "Take your music anywhere with this powerful portable speaker. Delivers rich, immersive sound with deep bass. Waterproof design perfect for outdoor adventures and pool parties.",
+    "highlights": ["<b>Output Power:</b> 20W", "<b>Battery Life:</b> 15 hours", "<b>Water Rating:</b> IPX7"],
     "technical_specs": {
-      "Bluetooth Version": "5.2",
-      "Weight": "0.8 kg",
-      "Dimensions": "18 x 7 x 7 cm",
-      "Charging Port": "USB-C"
+      "Output Power": "20W",
+      "Battery Life": "15 hours",
+      "Water Rating": "IPX7",
+      "Bluetooth": "5.2",
+      "Range": "30 meters",
+      "Charging": "UCB-C"
     },
     "related": [2, 5, 6]
   },
@@ -30,16 +32,18 @@
     "review_count": 856,
     "images": [
       "https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=800",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800",
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=800"
+      "https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=800",
+      "https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=800"
     ],
-    "description": "Experience crystal clear audio with our flagship wireless headphones. Features active noise cancellation and 40-hour battery life.",
-    "highlights": ["Active Noise Cancelling", "40H Battery Life", "Hi-Res Audio Support"],
+    "description": "Experience immersive audio with our premium wireless headphones. Featuring advanced noise cancellation, 40-hour battery life, and studio-quality sound. Perfect for music enthusiasts and professionals who demand the best audio experience.",
+    "highlights": ["<b>Battery Life:</b> 40 hours", "<b>Connectivity:</b> Bluetooth 5.3", "<b>Noise Cancellation:</b> Active ANC"],
     "technical_specs": {
-      "Driver Size": "40 mm",
-      "Charging Time": "2 Hours",
-      "Weight": "250 g",
-      "Frequency Response": "10Hz - 40kHz"
+      "Battery Life": "40 hours",
+      "Connectivity": "Bluetooth 5.3",
+      "Noise Cancellation": "Active ANC",
+      "Driver Size": "40mm",
+      "Weight": "250g",
+      "Charging Time": "2 hours"
     },
     "related": [1, 4, 3]
   },
@@ -48,20 +52,22 @@
     "name": "Professional DSLR Camera",
     "price": 2499.99,
     "category": "Photography",
-    "rating": 4.8,
+    "rating": 5,
     "review_count": 42,
     "images": [
       "https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=800",
-      "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=800",
-      "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800"
+      "https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=800",
+      "https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=800"
     ],
-    "description": "Capture stunning photos and 4K videos with this professional-grade DSLR. Built for creators who demand the best quality.",
-    "highlights": ["45.7MP Full-Frame Sensor", "4K Video at 60fps", "Weather-Sealed Body"],
+    "description": "Capture stunning images with this professional-grade DSLR camera. Features a full-frame sensor, 4K video recording, and exceptional low-light performance. Perfect for serious photographers and videographers.",
+    "highlights": ["<b>Sensor:</b> 45MP Full-Frame", "<b>Video:</b> 4K 60fps", "<b>ISO Range:</b> 100-51200"],
     "technical_specs": {
-      "Sensor Type": "CMOS",
-      "ISO Range": "64 - 25600",
-      "Storage": "Dual SD Slots",
-      "Mount": "F-Mount"
+      "Sensor": "45MP Full-Frame",
+      "Video": "4K 60fps",
+      "ISO Range": "100-51200",
+      "Autofocus Points": "693",
+      "Burst Speed": "10 fps",
+      "Display": "3.2 Tilting Touchscreen"
     },
     "related": [4, 6, 2]
   },
@@ -74,16 +80,18 @@
     "review_count": 215,
     "images": [
       "https://images.unsplash.com/photo-1673431738089-c4fc9c2e96a7?w=800",
-      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800",
-      "https://images.unsplash.com/photo-1611186871348-b1ec696e523b?w=800"
+      "https://images.unsplash.com/photo-1673431738089-c4fc9c2e96a7?w=800",
+      "https://images.unsplash.com/photo-1673431738089-c4fc9c2e96a7?w=800"
     ],
-    "description": "The ultimate workstation for professionals. High-performance processing meets stunning design and all-day battery life.",
-    "highlights": ["M2 Pro Chip", "32GB Unified Memory", "Liquid Retina XDR Display"],
+    "description": "Powerful performance meets sleek design in this professional laptop. Equipped with the latest processor, stunning display, and all-day battery life. Ideal for creative professionals and power users.",
+    "highlights": ["<b>Processor:</b> Intel Core i9", "<b>RAM:</b> 32GB DDR5", "<b>Storage:</b> 1TB SSD"],
     "technical_specs": {
-      "Storage": "1TB NVMe SSD",
-      "Battery": "Up to 18 Hours",
-      "Ports": "3x Thunderbolt 4, MagSafe 3",
-      "OS": "macOS"
+      "Processor": "Intel Core i9",
+      "RAM": "32GB DDR5",
+      "Storage": "1TB SSD",
+      "Display": "15.6 4K OLED",
+      "Graphics": "NVIDIA RTX 4060",
+      "Battery": "12 hours"
     },
     "related": [6, 3, 5]
   },
@@ -96,16 +104,18 @@
     "review_count": 340,
     "images": [
       "https://images.unsplash.com/photo-1665860455418-017fa50d29bc?w=800",
-      "https://images.unsplash.com/photo-1544117518-30df57809ca7?w=800",
-      "https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=800"
+      "https://images.unsplash.com/photo-1665860455418-017fa50d29bc?w=800",
+      "https://images.unsplash.com/photo-1665860455418-017fa50d29bc?w=800"
     ],
-    "description": "Track your health and stay connected with the Smart Fitness Watch Ultra. Robust design with precise GPS tracking.",
-    "highlights": ["Always-On Retina Display", "Advanced Heart Sensors", "Up to 36H Battery Life"],
+    "description": "Track your fitness goals with precision and style. Features advanced health monitoring, GPS tracking, and a vibrant always-on display. Water-resistant and built for active lifestyles.",
+    "highlights": ["<b>Display:</b> 1.9 AMOLED", "<b>Battery Life:</b> 7 days", "<b>Water Resistance:</b> 50m"],
     "technical_specs": {
-      "Case Material": "Titanium",
-      "Water Resistance": "100m",
-      "GPS": "Dual-Frequency L1/L5",
-      "Sensors": "SpO2, ECG, Temperature"
+      "Display": "1.9 AMOLED",
+      "Battery Life": "7 days",
+      "Water Resistance": "50m",
+      "GPS": "Built-in",
+      "Health Sensors": "Heart Rate, SpO2, ECG",
+      "Compatibility": "iOS & Android"
     },
     "related": [1, 2, 6]
   },
@@ -118,16 +128,18 @@
     "review_count": 567,
     "images": [
       "https://images.unsplash.com/photo-1740637977676-c8040b41dc7a?w=800",
-      "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800",
-      "https://images.unsplash.com/photo-1561154418-523f51461552?w=800"
+      "https://images.unsplash.com/photo-1740637977676-c8040b41dc7a?w=800",
+      "https://images.unsplash.com/photo-1740637977676-c8040b41dc7a?w=800"
     ],
-    "description": "Incredibly thin and powerful. Perfect for sketching, multitasking, and entertainment on the go.",
-    "highlights": ["Ultra-Slim Design", "M1 Processing Power", "Pencil Support"],
+    "description": "Experience productivity and entertainment on a stunning display. This ultra-thin tablet features powerful performance, all-day battery, and support for stylus input. Perfect for work and play.",
+    "highlights": ["<b>Display:</b> 12.9 Liquid Retina", "<b>Processor:</b> M2 Chip", "<b>Storage:</b> 256GB"],
     "technical_specs": {
-      "Display": "11-inch Liquid Retina",
-      "Refresh Rate": "120Hz ProMotion",
-      "Front Camera": "12MP Ultra Wide",
-      "Connectivity": "Wi-Fi 6E, 5G"
+      "Display": "12.9 Liquid Retina",
+      "Processor": "M2 Chip",
+      "Storage": "256GB",
+      "RAM": "8GB",
+      "Battery": "10 hours",
+      "Stylus Support": "Yes"
     },
     "related": [4, 5, 3]
   }
