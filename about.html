@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore | Product Details</title>
+    <title>About Us | TechStore</title>
     
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script src="js/product.js" defer></script>
     <script src="js/ui.js" defer></script>
 </head>
 <body>
 
-    <!-- Header -->
+<!-- Header -->
     <header class="header">
         <div class="container header-wrap">
             <a href="index.html" class="logo">
@@ -25,7 +23,7 @@
                 <a href="index.html">Products</a>
                 <a href="categories.html">Categories</a>
                 <a href="deals.html">Deals</a>
-                <a href="about.html">About</a>
+                <a href="about.html" class="active">About</a>
             </nav>
 
             <div class="actions">
@@ -39,15 +37,85 @@
     </header>
 
     <main class="container">
-        <!-- Контейнер для динамической отрисовки -->
-        <div id="productPageContent">
-            <div class="loading-state">Loading product details...</div>
-        </div>
+        <section class="about-hero">
+            <h1>About TechStore</h1>
+            <p>Your trusted destination for premium electronics and cutting-edge technology</p>
+        </section>
 
-        <!-- Секция похожих товаров -->
-        <section class="related-section">
-            <h2 class="section-title">Related Products</h2>
-            <div class="product-grid" id="relatedGrid"></div>
+        <!-- Story (Слева) -->
+        <section class="story-section">
+            <h2>Our Story</h2>
+            <p>Founded in 2020, TechStore has grown to become one of the most trusted names in consumer electronics. We're passionate about bringing you the latest and greatest technology products at competitive prices.</p>
+            <p>Our mission is simple: to provide exceptional products, outstanding customer service, and a seamless shopping experience. Whether you're a tech enthusiast or just looking for reliable electronics, we're here to help you find exactly what you need.</p>
+            <p>With a carefully curated selection of premium brands and products, we ensure that every item in our catalog meets our high standards for quality and performance.</p>
+        </section>
+
+        <!-- Values -->
+        <section class="values-section">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="card value-card">
+                    <span class="value-emoji">🎯</span>
+                    <h3>Quality First</h3>
+                    <p>We only stock products from trusted brands that meet our rigorous quality standards.</p>
+                </div>
+                <div class="card value-card">
+                    <span class="value-emoji">💯</span>
+                    <h3>Customer Satisfaction</h3>
+                    <p>Your happiness is our priority. We're committed to providing exceptional service.</p>
+                </div>
+                <div class="card value-card">
+                    <span class="value-emoji">⚡</span>
+                    <h3>Fast & Reliable</h3>
+                    <p>Quick shipping, easy returns, and responsive support when you need us.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email Us</h3>
+                        <p>support@techstore.com</p>
+                        <p>sales@techstore.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="phone"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Call Us</h3>
+                        <p>1-800-TECH-SHOP</p>
+                        <p>(1-800-832-4746)</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Visit Us</h3>
+                        <p>123 Tech Street</p>
+                        <p>San Francisco, CA 94105</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Business Hours</h3>
+                        <p>Mon-Fri: 9AM - 6PM PST</p>
+                        <p>Sat-Sun: 10AM - 4PM PST</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -75,9 +143,9 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <nav class="footer-nav">
-                        <a href="index.html">Shop All Products</a>
+                        <a href="product.html">Shop All Products</a>
                         <a href="deals.html">Special Deals</a>
-                        <a href="about.html">About Us</a>
+                        <a href="#">About Us</a>
                         <a href="#">Contact Support</a>
                     </nav>
                 </div>
@@ -117,5 +185,9 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>

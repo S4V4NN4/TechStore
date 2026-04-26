@@ -19,6 +19,7 @@
     --border: #e5e7eb;
     --radius: 12px;
     --container-max: 1600px;
+    --transition: 0.3s ease;
 
     /* Typography */
     --fw-medium: 500;
@@ -660,7 +661,6 @@ img {
 /* ==========================================================================
    9. PRODUCT PAGE (DETAIL VIEW)
    ========================================================================== */
-
 .breadcrumbs {
     display: flex;
     align-items: center;
@@ -1043,12 +1043,117 @@ img {
 }
 
 /* ==========================================================================
-   12. SCALABILITY & RESPONSIVE
+   12. ABOUT PAGE STYLES
+   ========================================================================== */
+.about-hero {
+    text-align: center;
+    padding: 4rem 0 3rem;
+}
+
+.about-hero p {
+    max-width: 700px;
+    margin: auto;
+}
+
+.story-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    text-align: left;
+}
+
+.story-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.story-section p {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.values-section {
+    margin-bottom: 4rem;
+}
+
+.values-section h2 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem;
+}
+
+.value-card {
+    padding: 2.5rem;
+    text-align: center;
+}
+
+.value-emoji {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.contact-container {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3rem;
+    margin-bottom: 4rem;
+}
+
+.contact-container h2 {
+    margin-bottom: 2rem;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.contact-icon-box {
+    width: 44px;
+    height: 44px;
+    background-color: #eff6ff;
+    color: var(--color-primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-info h3 {
+    font-size: 1.1rem;
+    font-weight: var(--fw-medium);
+    margin-bottom: 0.25rem;
+}
+
+.contact-info p {
+    font-size: 0.95rem;
+    color: var(--color-gray-600);
+    margin: 0;
+}
+
+/* ==========================================================================
+   13. SCALABILITY & RESPONSIVE
    ========================================================================== */
 
 /* MEDIUM SCREENS (Tablet / Small Laptop) */
 @media (max-width: 1024px) {
-    /* Header Burger */
     .burger-btn {
         display: flex;
     }
@@ -1072,7 +1177,6 @@ img {
         display: flex;
     }
 
-    /* Filters drawer logic */
     .filter-mobile-btn {
         display: flex;
     }
@@ -1111,7 +1215,6 @@ img {
         display: flex;
     }
 
-    /* Listing Page Layout */
     .main-content {
         flex-direction: column;
     }
@@ -1120,31 +1223,32 @@ img {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Product Detail Layout */
     .product-layout {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
-    /* Categories Layout */
     .category-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
     }
 
-    /* Footer Layout */
     .footer-top {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Deals Banner Responsive */
+/* Specific Tablet adjustments for About Page */
 @media (max-width: 768px) {
     .deal-banner {
         flex-direction: column;
         text-align: center;
         gap: 20px;
         padding: 1.5rem;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1187,5 +1291,23 @@ img {
 
     .policy-links {
         justify-content: center;
+    }
+
+    /* About page phone adjustments */
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .story-section, 
+    .contact-container {
+        padding: 2rem;
+    }
+
+    .about-hero {
+        padding: 2rem 0;
+    }
+    
+    .story-section h2 {
+        font-size: 1.3rem;
     }
 }
