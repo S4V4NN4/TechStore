@@ -35,7 +35,6 @@ function renderProducts(products) {
     container.innerHTML = products.map(product => `
         <article class="card" onclick="window.location.href='product.html?id=${product.id}'">
             <div class="card-img">
-                <!-- Берем первую картинку из массива изображений -->
                 <img src="${product.images[0]}" alt="${product.name}">
             </div>
             <div class="card-body">

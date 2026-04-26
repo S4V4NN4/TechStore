@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore | Product Details</title>
+    <title>TechStore | Special Deals</title>
     
     <link rel="stylesheet" href="css/style.css">
+
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script src="js/product.js" defer></script>
+    <script src="js/deals.js" defer></script>
     <script src="js/ui.js" defer></script>
 </head>
 <body>
@@ -24,7 +24,7 @@
             <nav class="nav" id="navMenu">
                 <a href="index.html">Products</a>
                 <a href="categories.html">Categories</a>
-                <a href="deals.html">Deals</a>
+                <a href="deals.html" class="active">Deals</a>
                 <a href="#">About</a>
             </nav>
 
@@ -39,16 +39,34 @@
     </header>
 
     <main class="container">
-        <!-- Контейнер для динамической отрисовки -->
-        <div id="productPageContent">
-            <div class="loading-state">Loading product details...</div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1><i data-lucide="tag"></i> Special Deals</h1>
+            <p>Limited time offers on our best products - Don't miss out!</p>
+        </section>
+
+        <!-- Flash Sale Banner -->
+        <div class="deal-banner">
+            <div class="deal-banner-content">
+                <h2>Flash Sale Event</h2>
+                <p>Save up to 30% on selected items</p>
+            </div>
+            <div class="deal-timer">
+                <i data-lucide="clock"></i>
+                <span>Ends in 2 days</span>
+            </div>
         </div>
 
-        <!-- Секция похожих товаров -->
-        <section class="related-section">
-            <h2 class="section-title">Related Products</h2>
-            <div class="product-grid" id="relatedGrid"></div>
-        </section>
+        <!-- Content Area -->
+        <div class="main-content">
+            <section class="product-grid" id="dealsGrid"></section>
+        </div>
+
+        <!-- Footer CTA -->
+        <div class="deals-footer-cta">
+            <p>Want to see more products?</p>
+            <a href="index.html" class="btn-cta-secondary">Browse All Products</a>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -75,8 +93,8 @@
                 <div class="footer-col">
                     <h4>Quick Links</h4>
                     <nav class="footer-nav">
-                        <a href="index.html">Shop All Products</a>
-                        <a href="deals.html">Special Deals</a>
+                        <a href="#">Shop All Products</a>
+                        <a href="#">Special Deals</a>
                         <a href="#">About Us</a>
                         <a href="#">Contact Support</a>
                     </nav>
