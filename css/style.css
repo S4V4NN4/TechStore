@@ -2,20 +2,20 @@
    1. DESIGN TOKENS
    ========================================================================== */
 :root {
-    /* Colors */
+    /* Brand Colors */
     --color-primary: oklch(54.6% .245 262.881);
     --color-primary-dark: oklch(48.8% .243 264.376);
     --color-purple: oklch(55.8% .288 302.321);
     --gradient-brand: linear-gradient(135deg, var(--color-primary), var(--color-purple));
 
-    /* UI Shades */
+    /* UI Colors */
     --color-gray-50: oklch(98.5% .002 247.839);
     --color-gray-100: oklch(96.7% .003 264.542);
     --color-gray-200: oklch(92.8% .006 264.531);
     --color-gray-600: oklch(44.6% .03 256.802);
     --color-text: oklch(21% .034 264.665);
 
-    /* Layout */
+    /* Layout & Animation */
     --border: #e5e7eb;
     --radius: 12px;
     --container-max: 1600px;
@@ -114,7 +114,7 @@ img {
     font-size: 1.3rem;
 }
 
-/* Nav Desktop */
+/* Navigation Links */
 .nav {
     display: flex;
     gap: 2.5rem;
@@ -138,7 +138,7 @@ img {
     font-weight: var(--fw-bold);
 }
 
-/* Actions Group */
+/* Header Actions */
 .actions {
     display: flex;
     align-items: center;
@@ -163,7 +163,7 @@ img {
 }
 
 /* ==========================================================================
-   4. PRODUCT LISTING PAGE (TOOLBAR & FILTERS)
+   4. PRODUCT LISTING (HERO & TOOLBAR)
    ========================================================================== */
 .hero {
     padding: 3rem 0 1rem;
@@ -179,7 +179,6 @@ img {
     font-size: 1rem;
 }
 
-/* Toolbar */
 .toolbar {
     display: flex;
     justify-content: space-between;
@@ -221,7 +220,9 @@ img {
     outline: none;
 }
 
-/* Sidebar Filters (Desktop) */
+/* ==========================================================================
+   5. FILTERS & SIDEBAR
+   ========================================================================== */
 .main-content {
     display: flex;
     gap: 3rem;
@@ -344,7 +345,7 @@ img {
 }
 
 /* ==========================================================================
-   5. PRODUCT GRID & CARDS
+   6. PRODUCT GRID & CARDS
    ========================================================================== */
 .product-grid {
     display: grid;
@@ -366,7 +367,7 @@ img {
     box-shadow: var(--shadow-md);
 }
 
-/* Card Image & Hover Effect */
+/* Card Image Animation */
 .card-img {
     aspect-ratio: 1;
     overflow: hidden;
@@ -415,7 +416,7 @@ img {
 }
 
 /* ==========================================================================
-   6. UI COMPONENTS (STARS & CHECKBOXES)
+   7. UI COMPONENTS (STARS & CHECKBOXES)
    ========================================================================== */
 .stars {
     display: inline-flex;
@@ -445,7 +446,7 @@ img {
     margin-left: 4px;
 }
 
-/* Custom Checkbox */
+/* Custom Checkbox UI */
 .checkbox-item {
     display: flex;
     align-items: center;
@@ -490,7 +491,7 @@ img {
 }
 
 /* ==========================================================================
-   7. FOOTER
+   8. FOOTER
    ========================================================================== */
 .footer {
     background: white;
@@ -600,7 +601,7 @@ img {
 }
 
 /* ==========================================================================
-   8. PRODUCT PAGE (DETAIL VIEW)
+   9. PRODUCT PAGE (DETAIL VIEW)
    ========================================================================== */
 
 /* Breadcrumbs */
@@ -623,7 +624,7 @@ img {
     font-weight: var(--fw-semibold);
 }
 
-/* Layout Gallery & Info */
+/* Gallery & Info Layout */
 .product-layout {
     display: grid;
     grid-template-columns: 1.1fr 1fr;
@@ -671,7 +672,7 @@ img {
     object-fit: cover;
 }
 
-/* Product Info */
+/* Info Side */
 .product-title {
     font-size: 2rem;
     line-height: 1.1;
@@ -708,7 +709,6 @@ img {
     color: var(--color-gray-600);
 }
 
-/* Highlights Box */
 .highlights-box {
     background: #f0f7ff;
     padding: 1.5rem;
@@ -746,7 +746,7 @@ img {
     margin: 0.5rem 0 2.5rem;
 }
 
-/* Qty & Add to Cart */
+/* Controls */
 .purchase-container {
     display: flex;
     flex-direction: column;
@@ -758,11 +758,6 @@ img {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-}
-
-.qty-picker-row label {
-    font-weight: var(--fw-bold);
-    font-size: 0.9rem;
 }
 
 .qty-picker {
@@ -853,7 +848,7 @@ img {
     color: var(--color-gray-600);
 }
 
-/* Related */
+/* Related section */
 .related-section {
     padding-top: 4rem;
 }
@@ -864,11 +859,81 @@ img {
 }
 
 /* ==========================================================================
-   9. SCALABILITY (RESPONSIVE)
+   10. CATEGORIES PAGE
+   ========================================================================== */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 2rem;
+    padding-bottom: 5rem;
+}
+
+.cat-card {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: white;
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--border);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.cat-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+.cat-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.cat-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cat-card:hover .cat-image img {
+    transform: scale(1.1);
+}
+
+/* Overlay Info */
+.cat-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to top, 
+        rgba(0, 0, 0, 0.8) 0%, 
+        rgba(0, 0, 0, 0.2) 60%, 
+        transparent 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 2rem;
+    color: white;
+}
+
+.cat-content h3 {
+    font-size: 1.5rem;
+    font-weight: var(--fw-bold);
+    margin-bottom: 4px;
+}
+
+.cat-count {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* ==========================================================================
+   11. SCALABILITY & RESPONSIVE
    ========================================================================== */
 
-/* MEDIUM SCREENS (Tablets/Small Laptops) */
+/* MEDIUM SCREENS (Tablet / Small Laptop) */
 @media (max-width: 1024px) {
+    /* Header Burger */
     .burger-btn {
         display: flex;
     }
@@ -902,7 +967,7 @@ img {
         position: fixed;
         top: 0;
         left: 0;
-        width: 50%; /* 50% ширина согласно ТЗ */
+        width: 50%; /* 50% ширина */
         height: 100%;
         background: white;
         z-index: 2000;
@@ -931,21 +996,28 @@ img {
         display: flex;
     }
 
+    /* Listing Page Layout */
     .main-content {
         flex-direction: column;
     }
 
-    /* Products & Product Detail */
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Product Detail Layout */
     .product-layout {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
-    /* Footer 2x2 */
+    /* Categories Layout */
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    /* Footer Layout */
     .footer-top {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -972,12 +1044,14 @@ img {
         width: auto;
     }
 
-    .product-grid {
+    .product-grid,
+    .category-grid,
+    .footer-top {
         grid-template-columns: 1fr;
     }
 
-    .footer-top {
-        grid-template-columns: 1fr;
+    .cat-card {
+        aspect-ratio: 16 / 9;
     }
 
     .footer-bottom {

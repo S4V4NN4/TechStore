@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore | Product Details</title>
+    <title>TechStore | Categories</title>
     
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
     
-    <script src="js/product.js" defer></script>
+    <script src="js/categories.js" defer></script>
     <script src="js/ui.js" defer></script>
 </head>
 <body>
@@ -23,7 +23,7 @@
             
             <nav class="nav" id="navMenu">
                 <a href="index.html">Products</a>
-                <a href="#">Categories</a>
+                <a href="categories.html" class="active">Categories</a>
                 <a href="#">Deals</a>
                 <a href="#">About</a>
             </nav>
@@ -39,16 +39,79 @@
     </header>
 
     <main class="container">
-        <!-- Контейнер для динамической отрисовки -->
-        <div id="productPageContent">
-            <div class="loading-state">Loading product details...</div>
-        </div>
-
-        <!-- Секция похожих товаров -->
-        <section class="related-section">
-            <h2 class="section-title">Related Products</h2>
-            <div class="product-grid" id="relatedGrid"></div>
+        <section class="hero">
+            <h1>Product Categories</h1>
+            <p>Browse our wide selection of premium electronics by category</p>
         </section>
+
+        <div class="category-grid" id="categoryGrid">
+            
+            <!-- Audio Category -->
+            <a href="index.html?category=Audio" class="cat-card">
+                <div class="cat-image">
+                    <img src="https://images.unsplash.com/photo-1760708368699-69cb9ed56f52?w=800" alt="Audio">
+                    <div class="cat-overlay">
+                        <div class="cat-content">
+                            <h3>Audio</h3>
+                            <span class="cat-count">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Computers Category -->
+            <a href="index.html?category=Computers" class="cat-card">
+                <div class="cat-image">
+                    <img src="https://images.unsplash.com/photo-1673431738089-c4fc9c2e96a7?w=800" alt="Computers">
+                    <div class="cat-overlay">
+                        <div class="cat-content">
+                            <h3>Computers</h3>
+                            <span class="cat-count">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Wearables Category -->
+            <a href="index.html?category=Wearables" class="cat-card">
+                <div class="cat-image">
+                    <img src="https://images.unsplash.com/photo-1665860455418-017fa50d29bc?w=800" alt="Wearables">
+                    <div class="cat-overlay">
+                        <div class="cat-content">
+                            <h3>Wearables</h3>
+                            <span class="cat-count">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Photography Category -->
+            <a href="index.html?category=Photography" class="cat-card">
+                <div class="cat-image">
+                    <img src="https://images.unsplash.com/photo-1532272278764-53cd1fe53f72?w=800" alt="Photography">
+                    <div class="cat-overlay">
+                        <div class="cat-content">
+                            <h3>Photography</h3>
+                            <span class="cat-count">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Tablets Category -->
+            <a href="index.html?category=Tablets" class="cat-card">
+                <div class="cat-image">
+                    <img src="https://images.unsplash.com/photo-1740637977676-c8040b41dc7a?w=800" alt="Tablets">
+                    <div class="cat-overlay">
+                        <div class="cat-content">
+                            <h3>Tablets</h3>
+                            <span class="cat-count">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+        </div>
     </main>
 
     <!-- Footer -->
@@ -117,5 +180,10 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Primary icon initialization
+        lucide.createIcons();
+    </script>
 </body>
 </html>
