@@ -160,14 +160,16 @@ function updateSummary(subtotal) {
     const existingDiscountRow = document.getElementById('discount-row');
     if (existingDiscountRow) existingDiscountRow.remove();
 
+    const tax = subtotal * taxRate;
+    const total = subtotal + tax;
+
     if (isPromoApplied) {
-        discount = subtotal * DISCOUNT_PERCENT;
+        discount = total * DISCOUNT_PERCENT;
         
-        // Создаем и вставляем строку скидки перед налогами
         const discountRow = document.createElement('div');
         discountRow.className = 'summary-row';
         discountRow.id = 'discount-row';
-        discountRow.style.color = '#10b981'; // Зеленый цвет
+        discountRow.style.color = '#10b981';
         discountRow.innerHTML = `
             <span class="label">Discount (SAVE10)</span>
             <span class="value">-$${discount.toFixed(2)}</span>
@@ -175,9 +177,7 @@ function updateSummary(subtotal) {
         taxEl.closest('.summary-row').before(discountRow);
     }
 
-    const taxableAmount = subtotal - discount;
-    const tax = taxableAmount * taxRate;
-    const total = taxableAmount + tax;
+    total = total - discount;
 
     if (subtotalEl) subtotalEl.innerText = `$${subtotal.toFixed(2)}`;
     if (taxEl) taxEl.innerText = `$${tax.toFixed(2)}`;
