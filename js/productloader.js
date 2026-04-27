@@ -74,6 +74,8 @@ function applyFiltersAndSort() {
         results.sort((a, b) => a.price - b.price);
     } else if (sortValue === "high") {
         results.sort((a, b) => b.price - a.price);
+    } else if (sortValue === "name-desc") {
+        results.sort((a, b) => b.name.localeCompare(a.name));
     } else {
         results.sort((a, b) => a.name.localeCompare(b.name));
     }
