@@ -840,6 +840,7 @@ img {
 .btn-add-cart {
     width: 100%;
     padding: 1.2rem;
+    margin-top: 1rem;
     background: var(--color-primary);
     color: white;
     font-weight: var(--fw-bold);
@@ -848,7 +849,6 @@ img {
     align-items: center;
     justify-content: center;
     gap: 12px;
-    transition: var(--transition);
     font-size: 1.1rem;
 }
 

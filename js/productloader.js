@@ -30,20 +30,25 @@ function renderProducts(products) {
     if (!container) return;
 
     container.innerHTML = products.map(product => `
-        <article class="card" onclick="window.location.href='product.html?id=${product.id}'">
+        <article class="card">
             <div class="card-img">
-                <img src="${product.images[0]}" alt="${product.name}">
+                <img src="${product.images[0]}" alt="${product.name}" onclick="window.location.href='product.html?id=${product.id}'">
             </div>
             <div class="card-body">
-                <h4 class="card-title">${product.name}</h4>
+                <h4 class="card-title" onclick="window.location.href='product.html?id=${product.id}'">${product.name}</h4>
                 <div class="rating">
                     ${renderStars(product.rating)}
                     <span class="rating-val">(${product.rating})</span>
                 </div>
+                
                 <div class="card-footer">
                     <span class="price">$${product.price}</span>
                     <span class="category">${product.category}</span>
                 </div>
+
+                <button class="btn-add-cart" data-id="${product.id}">
+                    <i data-lucide="shopping-cart"></i> Add to Cart
+                </button>
             </div>
         </article>
     `).join('');

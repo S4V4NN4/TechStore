@@ -48,7 +48,6 @@ function renderProduct(product) {
         </nav>
 
         <div class="product-layout">
-            <!-- Левая колонка: Увеличенная галерея -->
             <div class="product-gallery">
                 <div class="main-image">
                     <img src="${product.images[0]}" id="mainDisplayImg" alt="${product.name}">
@@ -62,7 +61,6 @@ function renderProduct(product) {
                 </div>
             </div>
 
-            <!-- Правая колонка: Инфо -->
             <div class="product-details">
                 <h1 class="product-title">${product.name}</h1>
                 
@@ -97,7 +95,7 @@ function renderProduct(product) {
                             <button onclick="updateQty(1)">+</button>
                         </div>
                     </div>
-                    <button class="btn-add-cart">
+                    <button class="btn-add-cart" data-id="${product.id}">
                         <i data-lucide="shopping-cart"></i> Add to Cart
                     </button>
                 </div>
