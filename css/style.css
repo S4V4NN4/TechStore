@@ -1620,3 +1620,40 @@ img {
 .cart-badge[data-count="0"] {
     display: none;
 }
+
+@media (max-width: 1024px) {
+    .cart-container { grid-template-columns: 1fr; }
+    
+    .cart-sidebar {
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; 
+    }
+}
+
+@media (max-width: 768px) {
+    .cart-item {
+        flex-direction: column;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .cart-item-img {
+        width: 100% !important;
+        height: 200px !important;
+        border-radius: 0;
+    }
+
+    .cart-item-info { padding: 1.5rem; }
+
+    .cart-item-price-block {
+        position: static;
+        margin-top: 1.5rem;
+        text-align: right;
+    }
+    
+    .cart-container {
+        padding: 0 15px;
+    }
+}
