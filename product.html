@@ -31,7 +31,10 @@
 
             <div class="actions">
                 <button class="icon-btn" aria-label="Search"><i data-lucide="search"></i></button>
-                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart"><i data-lucide="shopping-cart"></i></a>
+                <a href="cart.html" class="icon-btn cart-btn" aria-label="Cart">
+                    <i data-lucide="shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </a>
                 <button class="icon-btn burger-btn" id="burgerBtn">
                     <i data-lucide="menu"></i>
                 </button>
@@ -40,12 +43,10 @@
     </header>
 
     <main class="container">
-        <!-- Контейнер для динамической отрисовки -->
         <div id="productPageContent">
             <div class="loading-state">Loading product details...</div>
         </div>
 
-        <!-- Секция похожих товаров -->
         <section class="related-section">
             <h2 class="section-title">Related Products</h2>
             <div class="product-grid" id="relatedGrid"></div>

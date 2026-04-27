@@ -102,6 +102,8 @@ function renderCart() {
     lucide.createIcons();
     
     setupEventListeners();
+
+    updateCartBadge();
 }
 
 function setupEventListeners() {
@@ -148,6 +150,7 @@ function removeFromCart(id) {
     cart = cart.filter(item => item.id !== id);
     localStorage.setItem('cart', JSON.stringify(cart));
     renderCart();
+    updateCartBadge();
 }
 
 function updateSummary(subtotal) {
