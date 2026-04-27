@@ -1,5 +1,9 @@
 let allProducts = [];
 
+let isPromoApplied = false;
+const PROMO_CODE = "SAVE10";
+const DISCOUNT_PERCENT = 0.10;
+
 const cartPageContainer = document.querySelector('.cart-container');
 const cartItemsContainer = document.getElementById('cartItemsList');
 const heroSection = document.querySelector('.hero');
@@ -11,15 +15,16 @@ const totalEl = document.getElementById('totalPrice');
 async function initCart() {
     try {
         const response = await fetch('./assets/products.json');
-        if (!response.ok) throw new Error("Не удалось загрузить базу данных товаров");
+        if (!response.ok) throw new Error("Error loading products.");
         
         allProducts = await response.json();
         
         renderCart();
+        initPromoHandler();
     } catch (error) {
         console.error("Ошибка инициализации:", error);
         if (cartItemsContainer) {
-            cartItemsContainer.innerHTML = `<p>Error loading products. Please check console.</p>`;
+            cartItemsContainer.innerHTML = `<p>Error loading products.</p>`;
         }
     }
 }
@@ -147,12 +152,71 @@ function removeFromCart(id) {
 
 function updateSummary(subtotal) {
     const taxRate = 0.08;
-    const tax = subtotal * taxRate;
-    const total = subtotal + tax;
+    let discount = 0;
+    
+    const existingDiscountRow = document.getElementById('discount-row');
+    if (existingDiscountRow) existingDiscountRow.remove();
+
+    if (isPromoApplied) {
+        discount = subtotal * DISCOUNT_PERCENT;
+        
+        // Создаем и вставляем строку скидки перед налогами
+        const discountRow = document.createElement('div');
+        discountRow.className = 'summary-row';
+        discountRow.id = 'discount-row';
+        discountRow.style.color = '#10b981'; // Зеленый цвет
+        discountRow.innerHTML = `
+            <span class="label">Discount (SAVE10)</span>
+            <span class="value">-$${discount.toFixed(2)}</span>
+        `;
+        taxEl.closest('.summary-row').before(discountRow);
+    }
+
+    const taxableAmount = subtotal - discount;
+    const tax = taxableAmount * taxRate;
+    const total = taxableAmount + tax;
 
     if (subtotalEl) subtotalEl.innerText = `$${subtotal.toFixed(2)}`;
     if (taxEl) taxEl.innerText = `$${tax.toFixed(2)}`;
     if (totalEl) totalEl.innerText = `$${total.toFixed(2)}`;
+}
+
+function initPromoHandler() {
+    const promoInput = document.querySelector('.promo-input');
+    const applyBtn = document.querySelector('.btn-apply');
+    const promoHint = document.querySelector('.promo-hint');
+    const promoGroup = document.querySelector('.promo-group');
+
+    if (!applyBtn || !promoInput) return;
+
+    applyBtn.addEventListener('click', () => {
+        const value = promoInput.value.trim().toUpperCase();
+
+        if (value === PROMO_CODE) {
+            isPromoApplied = true;
+            
+            promoHint.style.display = 'none';
+            
+            let successMsg = document.querySelector('.promo-success-msg');
+            if (!successMsg) {
+                successMsg = document.createElement('p');
+                successMsg.className = 'promo-success-msg';
+                successMsg.style.color = '#10b981';
+                successMsg.style.fontSize = '0.875rem';
+                successMsg.style.marginTop = '8px';
+                successMsg.innerText = 'Promo code applied successfully!';
+                promoGroup.appendChild(successMsg);
+            }
+
+            applyBtn.disabled = true;
+            applyBtn.style.opacity = '0.6';
+            promoInput.readOnly = true;
+
+            renderCart(); 
+        } else {
+            alert('Invalid promo code. Try SAVE10');
+        }
+    });
 }
 
 initCart();
