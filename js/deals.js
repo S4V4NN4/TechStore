@@ -54,7 +54,6 @@ function renderPromoGrid(products) {
         </article>
     `).join('');
 
-    // Инициализация иконок Lucide
     if (window.lucide) {
         lucide.createIcons();
     }

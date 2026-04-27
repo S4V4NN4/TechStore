@@ -1,6 +1,5 @@
 let allProducts = [];
 
-// Initialize products from JSON
 async function loadProducts() {
     try {
         const response = await fetch('./assets/products.json');
@@ -12,7 +11,6 @@ async function loadProducts() {
     }
 }
 
-// Generate stars using Lucide icons
 function renderStars(rating) {
     let starsHtml = '';
     for (let i = 1; i <= 5; i++) {
@@ -27,7 +25,6 @@ function renderStars(rating) {
     return `<div class="stars">${starsHtml}</div>`;
 }
 
-// Core Rendering function
 function renderProducts(products) {
     const container = document.getElementById('productGrid');
     if (!container) return;
@@ -53,7 +50,6 @@ function renderProducts(products) {
     lucide.createIcons();
 }
 
-// Global Filter & Sort Logic
 function applyFiltersAndSort() {
     const minPrice = parseInt(document.getElementById("minPrice")?.value || 0);
     const maxPrice = parseInt(document.getElementById("maxPrice")?.value || 3000);

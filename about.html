@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechStore | Premium Electronics</title>
+    <title>About Us | TechStore</title>
     
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <script src="js/doubleslider.js" defer></script>
-    <script src="js/productloader.js" defer></script>
     <script src="js/ui.js" defer></script>
 </head>
 <body>
 
-    <!-- Header -->
+<!-- Header -->
     <header class="header">
         <div class="container header-wrap">
             <a href="index.html" class="logo">
@@ -23,10 +20,10 @@
             </a>
             
             <nav class="nav" id="navMenu">
-                <a href="index.html" class="active">Products</a>
+                <a href="index.html">Products</a>
                 <a href="categories.html">Categories</a>
                 <a href="deals.html">Deals</a>
-                <a href="about.html">About</a>
+                <a href="about.html" class="active">About</a>
             </nav>
 
             <div class="actions">
@@ -43,71 +40,86 @@
     </header>
 
     <main class="container">
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Premium Electronics</h1>
-            <p>Discover our curated collection of high-quality tech products</p>
+        <section class="about-hero">
+            <h1>About TechStore</h1>
+            <p>Your trusted destination for premium electronics and cutting-edge technology</p>
         </section>
 
-        <!-- Toolbar -->
-        <div class="toolbar">
-            <div class="toolbar-left-group">
-                <button class="filter-mobile-btn" id="filterOpenBtn">
-                    <i data-lucide="sliders-horizontal"></i> Filters
-                </button>
-                <div class="products-count">0 products</div>
-            </div>
-            
-            <div class="sorting">
-                <span>Sort by:</span>
-                <select class="sort-select" id="sortSelect">
-                    <option value="name">Name (A-Z)</option>
-                    <option value="low">Price: Low to High</option>
-                    <option value="high">Price: High to Low</option>
-                </select>
-            </div>
-        </div>
+        <!-- Story (Слева) -->
+        <section class="story-section">
+            <h2>Our Story</h2>
+            <p>Founded in 2020, TechStore has grown to become one of the most trusted names in consumer electronics. We're passionate about bringing you the latest and greatest technology products at competitive prices.</p>
+            <p>Our mission is simple: to provide exceptional products, outstanding customer service, and a seamless shopping experience. Whether you're a tech enthusiast or just looking for reliable electronics, we're here to help you find exactly what you need.</p>
+            <p>With a carefully curated selection of premium brands and products, we ensure that every item in our catalog meets our high standards for quality and performance.</p>
+        </section>
 
-        <div class="main-content">
-            <!-- Sidebar Filters -->
-            <aside class="filters" id="sidebarFilters">
-                <div class="filter-card">
-                    <div class="filter-header-mobile">
-                        <h2 class="filter-title"><i data-lucide="sliders-horizontal"></i> Filters</h2>
-                        <button class="filter-close-btn" id="filterCloseBtn">
-                            <i data-lucide="x"></i>
-                        </button>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <h3>Rating</h3>
-                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="5"> 5+ Stars</label>
-                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="4"> 4+ Stars</label>
-                        <label class="checkbox-item"><input type="checkbox" class="rating-checkbox" value="3"> 3+ Stars</label>
-                    </div>
-
-                    <div class="filter-group">
-                        <h3>Price Range</h3>
-                        <div class="slider-container">
-                            <div class="slider-track"></div>
-                            <div id="sliderRange" class="slider-range"></div>
-                            <input type="range" min="0" max="3000" value="0" step="50" id="minPrice">
-                            <input type="range" min="0" max="3000" value="3000" step="50" id="maxPrice">
-                        </div>
-                        
-                        <div class="price-labels">
-                            <span id="minValue">$0</span>
-                            <span id="maxValue">$3000</span>
-                        </div>
-                    </div>
-
-                    <button class="btn-clear" type="button">Clear All Filters</button>
+        <!-- Values -->
+        <section class="values-section">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="card value-card">
+                    <span class="value-emoji">🎯</span>
+                    <h3>Quality First</h3>
+                    <p>We only stock products from trusted brands that meet our rigorous quality standards.</p>
                 </div>
-            </aside>
+                <div class="card value-card">
+                    <span class="value-emoji">💯</span>
+                    <h3>Customer Satisfaction</h3>
+                    <p>Your happiness is our priority. We're committed to providing exceptional service.</p>
+                </div>
+                <div class="card value-card">
+                    <span class="value-emoji">⚡</span>
+                    <h3>Fast & Reliable</h3>
+                    <p>Quick shipping, easy returns, and responsive support when you need us.</p>
+                </div>
+            </div>
+        </section>
 
-            <!-- Product Grid -->
-            <section class="product-grid" id="productGrid"></section>
-        </div>
+        <section class="contact-container">
+            <h2>Get in Touch</h2>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="mail"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Email Us</h3>
+                        <p>support@techstore.com</p>
+                        <p>sales@techstore.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="phone"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Call Us</h3>
+                        <p>1-800-TECH-SHOP</p>
+                        <p>(1-800-832-4746)</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="map-pin"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Visit Us</h3>
+                        <p>123 Tech Street</p>
+                        <p>San Francisco, CA 94105</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-box">
+                        <i data-lucide="clock"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Business Hours</h3>
+                        <p>Mon-Fri: 9AM - 6PM PST</p>
+                        <p>Sat-Sun: 10AM - 4PM PST</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -136,7 +148,7 @@
                     <nav class="footer-nav">
                         <a href="product.html">Shop All Products</a>
                         <a href="deals.html">Special Deals</a>
-                        <a href="about.html">About Us</a>
+                        <a href="#">About Us</a>
                         <a href="#">Contact Support</a>
                     </nav>
                 </div>
@@ -176,5 +188,9 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
