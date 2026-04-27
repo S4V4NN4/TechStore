@@ -160,8 +160,8 @@ function updateSummary(subtotal) {
     const existingDiscountRow = document.getElementById('discount-row');
     if (existingDiscountRow) existingDiscountRow.remove();
 
-    const tax = subtotal * taxRate;
-    const total = subtotal + tax;
+    let tax = subtotal * taxRate;
+    let total = subtotal + tax;
 
     if (isPromoApplied) {
         discount = total * DISCOUNT_PERCENT;
@@ -175,13 +175,14 @@ function updateSummary(subtotal) {
             <span class="value">-$${discount.toFixed(2)}</span>
         `;
         taxEl.closest('.summary-row').before(discountRow);
-    }
 
-    total = total - discount;
+        total = total - discount;
+    }
 
     if (subtotalEl) subtotalEl.innerText = `$${subtotal.toFixed(2)}`;
     if (taxEl) taxEl.innerText = `$${tax.toFixed(2)}`;
     if (totalEl) totalEl.innerText = `$${total.toFixed(2)}`;
+    console.log(total);
 }
 
 function initPromoHandler() {
